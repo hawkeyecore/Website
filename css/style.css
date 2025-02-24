@@ -141,7 +141,13 @@ h6,
     padding: 20px 0;
     color: var(--dark);
 }
-
+.navbar{
+    background-color:#EEF9FF99;
+}
+.fact_starts{
+    display: flex;
+    justify-content: center !important;
+}
 .navbar-brand{
     display: flex;
     align-items: center;
