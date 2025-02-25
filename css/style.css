@@ -130,19 +130,20 @@ h6,
     position: relative;
     margin-left: 25px;
     padding: 35px 0;
-    color: #FFFFFF;
+    color: #171717;
     font-size: 18px;
     font-weight: 600;
     outline: none;
     transition: .5s;
 }
 
+
 .sticky-top.navbar-dark .navbar-nav .nav-link {
     padding: 20px 0;
     color: var(--dark);
 }
 .navbar{
-    background-color:#EEF9FF99;
+    background-color:#EEF9FF;
 }
 .fact_starts{
     display: flex;
