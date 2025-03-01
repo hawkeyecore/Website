@@ -1,0 +1,21 @@
+/*
+Theme Name: Hawkeye Core Theme
+Theme URI: https://hawkeye-core.com
+Author: Your Name
+Author URI: https://yourwebsite.com
+Description: A fully custom WordPress theme for Hawkeye Core.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: custom, technology, IT, consulting
+Text Domain: hawkeye-core
+*/
+.navbar-nav .nav-item .nav-link {
+    color: #fff; /* Change the color as needed */
+    padding: 10px 15px; /* Adjust padding as needed */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #f0f0f0; /* Change the hover color as needed */
+    background-color: #007bff; /* Change the hover background color as needed */
+}
