@@ -1,6 +1,5 @@
-// Check if we're in the preview environment
-const isPreviewEnvironment =
-  typeof window !== "undefined" || process.env.NEXT_RUNTIME === "edge" || !process.env.DB_HOST
+// Check if we're in the preview environment - simplified detection
+const isPreviewEnvironment = typeof window !== "undefined" || !process.env.DB_HOST
 
 // Mock data for preview environment
 const mockBlogPosts = [

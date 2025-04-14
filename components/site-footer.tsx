@@ -9,20 +9,20 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4 lg:grid-cols-5">
           <div className="col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <Image
-                src="/abstract-geometric-logo.png"
-                alt="TechCorp Logo"
-                width={32}
-                height={32}
-                className="rounded"
-              />
-              <span className="text-xl font-bold">TechCorp</span>
+              <Image src="/hawkeye-core-logo.png" alt="Hawkeye Core Logo" width={32} height={32} className="rounded" />
+              <span className="text-xl font-bold">Hawkeye Core</span>
             </div>
             <p className="text-muted-foreground max-w-xs">
-              Empowering businesses with cutting-edge technology solutions since 2010.
+              Founded in 2022 and based in Houston, Texas, Hawkeye Core is an IT consulting company committed to
+              delivering cutting-edge technology solutions that empower businesses to excel in today's competitive
+              landscape. We specialize in a broad range of services, including the development and deployment of
+              software agents, IT consulting, app and website support, network solutions, and professional training.
             </p>
             <div className="flex gap-4 mt-4">
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
+              <Link
+                href="https://www.facebook.com/profile.php?id=61573424889325&locale=ar_AR"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -39,7 +39,7 @@ export function SiteFooter() {
                 </svg>
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
+              <Link href="https://x.com/Hawkeye_core?s=09" className="text-muted-foreground hover:text-foreground">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -56,7 +56,10 @@ export function SiteFooter() {
                 </svg>
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
+              <Link
+                href="https://www.linkedin.com/company/hawkeye-core/"
+                className="text-muted-foreground hover:text-foreground"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -75,6 +78,28 @@ export function SiteFooter() {
                 </svg>
                 <span className="sr-only">LinkedIn</span>
               </Link>
+              <Link
+                href="https://www.instagram.com/hawkeye_core?igsh=c3U3c3NycDFoMDBk"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+                <span className="sr-only">Instagram</span>
+              </Link>
             </div>
           </div>
           <div className="space-y-4">
@@ -83,11 +108,6 @@ export function SiteFooter() {
               <li>
                 <Link href="/about" className="text-muted-foreground hover:text-foreground">
                   About
-                </Link>
-              </li>
-              <li>
-                <Link href="/careers" className="text-muted-foreground hover:text-foreground">
-                  Careers
                 </Link>
               </li>
               <li>
@@ -110,11 +130,6 @@ export function SiteFooter() {
                   Software
                 </Link>
               </li>
-              <li>
-                <Link href="/products" className="text-muted-foreground hover:text-foreground">
-                  Hardware
-                </Link>
-              </li>
             </ul>
           </div>
           <div className="space-y-4">
@@ -122,22 +137,22 @@ export function SiteFooter() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
                 <Phone className="h-4 w-4 mt-0.5" />
-                <span className="text-muted-foreground">+1 (555) 123-4567</span>
+                <span className="text-muted-foreground">+1 281-760-7332</span>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="h-4 w-4 mt-0.5" />
-                <span className="text-muted-foreground">info@techcorp.com</span>
+                <span className="text-muted-foreground">info@hawkeye-core.com</span>
               </li>
               <li className="text-muted-foreground">
-                123 Tech Street
+                10780 Westview Dr Ste F PMB 10006
                 <br />
-                San Francisco, CA 94107
+                Houston, TX 77043
               </li>
             </ul>
           </div>
         </div>
         <div className="mt-10 border-t pt-6 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} TechCorp. All rights reserved.
+          © {new Date().getFullYear()} Hawkeye Core. All rights reserved.
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, ArrowRight, Layers, Code, BarChart, Building, Activity, Droplet, Landmark } from "lucide-react"
+import { ArrowRight, Layers, Code, BarChart, Building, Activity, Droplet, Landmark } from "lucide-react"
 
 export default function Home() {
   return (
@@ -20,11 +20,8 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="gap-1">
-                  Get Started <ChevronRight className="h-4 w-4" />
-                </Button>
                 <Button size="lg" variant="outline">
-                  Learn More
+                  <Link href="/contact">Learn More</Link>
                 </Button>
               </div>
             </div>
@@ -69,8 +66,10 @@ export default function Home() {
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0055b3]/10">
                 <Layers className="h-8 w-8 text-[#0055b3]" />
               </div>
-              <h3 className="text-xl font-bold">Cloud Solutions</h3>
-              <p className="text-center text-muted-foreground">Scalable cloud infrastructure and migration services.</p>
+              <h3 className="text-xl font-bold">IT Consulting</h3>
+              <p className="text-center text-muted-foreground">
+                Expert advice and strategic planning for your IT needs.
+              </p>
               <Link href="/services" className="flex items-center text-sm font-medium text-[#0055b3]">
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
@@ -79,9 +78,9 @@ export default function Home() {
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0055b3]/10">
                 <BarChart className="h-8 w-8 text-[#0055b3]" />
               </div>
-              <h3 className="text-xl font-bold">Data Analytics</h3>
+              <h3 className="text-xl font-bold">Network Solutions</h3>
               <p className="text-center text-muted-foreground">
-                Turn your data into actionable insights for better decision-making.
+                Secure and efficient network infrastructure for your business.
               </p>
               <Link href="/services" className="flex items-center text-sm font-medium text-[#0055b3]">
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
@@ -150,8 +149,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Products */}
+      {/* About Us Section */}
       <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6">
+          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">About Hawkeye Core</h2>
+              <p className="text-muted-foreground">
+                Founded in 2022 and based in Houston, Texas, Hawkeye Core is an IT consulting company committed to
+                delivering cutting-edge technology solutions that empower businesses to excel in today's competitive
+                landscape.
+              </p>
+              <p className="text-muted-foreground">
+                Our mission is to help businesses leverage advanced IT solutions to streamline operations, improve user
+                experiences, and foster long-term growth.
+              </p>
+              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Link href="/about">
+                  <Button>Learn More About Us</Button>
+                </Link>
+              </div>
+            </div>
+            <div className="flex items-center justify-center">
+              <Image
+                src="/images/team-collaboration.jpeg"
+                alt="Team Collaboration"
+                width={550}
+                height={550}
+                className="rounded-lg object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
@@ -210,73 +243,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Blog Posts */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Latest from Our Blog</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Stay updated with the latest technology trends and insights.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "The Future of AI in Business",
-                excerpt:
-                  "Exploring how artificial intelligence is transforming business operations and decision-making.",
-                date: "April 15, 2025",
-                image: "/images/ai-robot-assistant.jpeg",
-                link: "future-of-ai-in-business",
-              },
-              {
-                title: "Cloud Migration Strategies",
-                excerpt: "Best practices for moving your infrastructure to the cloud securely and efficiently.",
-                date: "April 10, 2025",
-                image: "/images/business-presentation-meeting.jpeg",
-                link: "cloud-migration-strategies",
-              },
-              {
-                title: "Cybersecurity Trends for 2025",
-                excerpt: "Stay ahead of threats with these emerging cybersecurity trends and technologies.",
-                date: "April 5, 2025",
-                image: "/images/circuit-board-closeup.jpeg",
-                link: "cybersecurity-trends-2025",
-              },
-            ].map((blog, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-lg border bg-background">
-                <div className="aspect-video overflow-hidden">
-                  <Image
-                    src={blog.image || "/placeholder.svg"}
-                    alt={blog.title}
-                    width={400}
-                    height={300}
-                    className="object-cover transition-transform group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-muted-foreground">{blog.date}</p>
-                  <h3 className="text-xl font-bold mt-2">{blog.title}</h3>
-                  <p className="text-muted-foreground mt-2">{blog.excerpt}</p>
-                  <Link href={`/blog/${blog.link}`}>
-                    <Button variant="link" className="p-0 mt-4">
-                      Read More
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-center">
-            <Button variant="outline" size="lg">
-              View All Posts
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-[#0f172a] text-primary-foreground">
         <div className="container px-4 md:px-6">
@@ -290,9 +256,11 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg" variant="secondary">
-                Contact Us
-              </Button>
+              <Link href="/contact">
+                <Button size="lg" variant="secondary">
+                  Contact Us
+                </Button>
+              </Link>
               <Button
                 size="lg"
                 variant="outline"
