@@ -1,51 +1,76 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { getCurrentUser } from "@/lib/auth"
-import { create, getAll } from "@/lib/db"
+import { query, create } from "@/lib/db"
+import { getServerSession } from "next/server"
 
-// Get all blog posts
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const posts = await getAll("blog_posts")
-    return NextResponse.json(posts)
+    const searchParams = request.nextUrl.searchParams
+    const status = searchParams.get("status") || "published"
+
+    let sql
+    let params: any[] = []
+
+    if (status === "all") {
+      sql = `
+        SELECT 
+          bp.id, bp.title, bp.slug, bp.excerpt, bp.content, bp.image_url, 
+          bp.status, TO_CHAR(bp.created_at, 'YYYY-MM-DD') as created_at,
+          u.name as author_name
+        FROM blog_posts bp
+        LEFT JOIN users u ON bp.author_id = u.id
+        ORDER BY bp.created_at DESC
+      `
+    } else {
+      sql = `
+        SELECT 
+          bp.id, bp.title, bp.slug, bp.excerpt, bp.content, bp.image_url, 
+          bp.status, TO_CHAR(bp.created_at, 'YYYY-MM-DD') as created_at,
+          u.name as author_name
+        FROM blog_posts bp
+        LEFT JOIN users u ON bp.author_id = u.id
+        WHERE bp.status = $1
+        ORDER BY bp.created_at DESC
+      `
+      params = [status]
+    }
+
+    const blogPosts = await query(sql, params)
+    return NextResponse.json(blogPosts)
   } catch (error: any) {
-    console.error("Error getting blog posts:", error)
-    return NextResponse.json({ error: "Failed to get blog posts" }, { status: 500 })
+    return NextResponse.json({ error: error.message }, { status: 500 })
   }
 }
 
-// Create a new blog post
-export async function POST(req: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    // Get current user
-    const user = await getCurrentUser()
-    if (!user) {
+    const session = await getServerSession()
+
+    if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const { title, slug, excerpt, content, image_url, status } = await req.json()
+    const data = await request.json()
 
-    // Validate required fields
-    if (!title || !slug || !content) {
-      return NextResponse.json({ error: "Title, slug, and content are required" }, { status: 400 })
+    // Get the current user's ID
+    const userResult = await query("SELECT id FROM users WHERE email = $1", [session.user?.email])
+
+    if (!userResult || userResult.length === 0) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 })
     }
 
-    // Create the blog post
-    const postData = {
-      title,
-      slug,
-      excerpt: excerpt || null,
-      content,
-      image_url: image_url || null,
-      author_id: user.id,
-      status: status || "draft",
-      published_at: status === "published" ? new Date() : null,
+    const userId = userResult[0].id
+
+    // Add the author_id to the data
+    data.author_id = userId
+
+    // If publishing, set published_at
+    if (data.status === "published") {
+      data.published_at = new Date()
     }
 
-    const postId = await create("blog_posts", postData)
-
-    return NextResponse.json({ id: postId, ...postData }, { status: 201 })
+    const id = await create("blog_posts", data)
+    return NextResponse.json({ id, success: true })
   } catch (error: any) {
-    console.error("Error creating blog post:", error)
-    return NextResponse.json({ error: "Failed to create blog post" }, { status: 500 })
+    return NextResponse.json({ error: error.message }, { status: 500 })
   }
 }

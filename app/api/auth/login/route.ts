@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Get user from database
-    const users = (await query("SELECT id, email, name, role, password FROM users WHERE email = ?", [email])) as any[]
+    const users = (await query("SELECT id, email, name, role, password FROM users WHERE email = $1", [email])) as any[]
 
     const user = users[0]
 
