@@ -14,6 +14,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // Remove any redirects to /about that might be here
   return NextResponse.next()
 }
 

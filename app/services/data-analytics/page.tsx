@@ -2,6 +2,59 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, ArrowLeft } from "lucide-react"
+import { CaseStudyCard } from "@/components/case-study-dialog"
+
+// Define case studies data
+const caseStudies = [
+  {
+    id: 1,
+    title: "Retail Chain Analytics",
+    client: "Urban Retail Group",
+    industry: "Retail",
+    challenge:
+      "Urban Retail Group was struggling to understand customer behavior across their 50+ stores. They had vast amounts of data but lacked the tools and expertise to extract meaningful insights, resulting in ineffective marketing campaigns and missed opportunities for personalization.",
+    solution:
+      "We implemented a comprehensive customer analytics platform that integrated data from in-store purchases, online interactions, loyalty programs, and social media. The solution included custom dashboards for different departments and predictive models for customer segmentation and behavior analysis.",
+    results: [
+      "60% improvement in marketing ROI within 6 months",
+      "25% increase in customer retention rates",
+      "Created personalized shopping experiences based on customer preferences",
+      "Identified $2.3M in additional revenue opportunities",
+      "Reduced inventory costs by 15% through improved demand forecasting",
+    ],
+    testimonial: {
+      quote:
+        "The insights we've gained from our data have transformed how we approach our customers. We're now able to anticipate their needs and preferences in ways that weren't possible before.",
+      author: "Amanda Rodriguez",
+      position: "Chief Marketing Officer, Urban Retail Group",
+    },
+    imageUrl: "/images/retail-analytics-dashboard.jpeg",
+  },
+  {
+    id: 2,
+    title: "Healthcare Provider Analytics",
+    client: "Midwest Health Network",
+    industry: "Healthcare",
+    challenge:
+      "Midwest Health Network was facing increasing readmission rates and struggling to identify at-risk patients. Their existing data systems were siloed, making it difficult to get a comprehensive view of patient care journeys and identify patterns that could improve outcomes.",
+    solution:
+      "We developed a predictive analytics system that integrated data from electronic health records, billing systems, and patient feedback. The solution included risk scoring algorithms for readmission prediction, resource optimization tools, and clinical decision support dashboards.",
+    results: [
+      "30% reduction in readmission rates within the first year",
+      "Improved resource allocation across 8 facilities",
+      "Enhanced preventive care programs based on population health insights",
+      "Reduced average length of stay by 1.2 days",
+      "Identified $3.5M in potential cost savings",
+    ],
+    testimonial: {
+      quote:
+        "The predictive analytics platform has revolutionized how we deliver care. We're now able to identify at-risk patients earlier and intervene before conditions worsen, leading to better outcomes and more efficient use of resources.",
+      author: "Dr. James Wilson",
+      position: "Chief Medical Officer, Midwest Health Network",
+    },
+    imageUrl: "/images/healthcare-analytics-platform.jpeg",
+  },
+]
 
 export default function DataAnalyticsPage() {
   return (
@@ -182,54 +235,9 @@ export default function DataAnalyticsPage() {
         <div className="container px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Case Studies</h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="border rounded-lg p-6 space-y-4">
-              <h3 className="text-2xl font-bold">Retail Chain</h3>
-              <p className="text-muted-foreground">
-                Implemented a customer analytics solution that increased targeted marketing effectiveness by 60%.
-              </p>
-              <div>
-                <h4 className="font-medium mb-2">Results:</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>60% improvement in marketing ROI</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>25% increase in customer retention</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>Personalized shopping experiences</span>
-                  </li>
-                </ul>
-              </div>
-              <Button variant="outline">Read Full Case Study</Button>
-            </div>
-            <div className="border rounded-lg p-6 space-y-4">
-              <h3 className="text-2xl font-bold">Healthcare Provider</h3>
-              <p className="text-muted-foreground">
-                Developed a predictive analytics system that improved patient outcomes and reduced readmission rates.
-              </p>
-              <div>
-                <h4 className="font-medium mb-2">Results:</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>30% reduction in readmission rates</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>Improved resource allocation</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>Enhanced preventive care programs</span>
-                  </li>
-                </ul>
-              </div>
-              <Button variant="outline">Read Full Case Study</Button>
-            </div>
+            {caseStudies.map((caseStudy) => (
+              <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} />
+            ))}
           </div>
         </div>
       </section>
@@ -251,13 +259,6 @@ export default function DataAnalyticsPage() {
                   Schedule a Consultation
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
-              >
-                Contact Sales
-              </Button>
             </div>
           </div>
         </div>

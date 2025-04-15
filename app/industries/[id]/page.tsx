@@ -1,10 +1,17 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, ArrowLeft, Activity, Droplet, Landmark } from "lucide-react"
+import { CheckCircle, ArrowLeft, Activity, Droplet, Landmark, Building, Home, Truck, ShoppingBag } from "lucide-react"
 import { notFound } from "next/navigation"
+import { SystemDetailsDialog, type SystemDetailsProps } from "@/components/system-details-dialog"
+
+// Default fallback image that we know exists
+const FALLBACK_IMAGE = "/modern-tech-workspace.png"
 
 // Sample industries data - in a real app, this would come from a database or API
 const industries = [
@@ -27,6 +34,7 @@ const industries = [
           "Secure patient data management and access controls.",
           "Customizable templates for different medical specialties.",
         ],
+        imageUrl: "/images/healthcare-dashboard.jpeg",
       },
       {
         name: "Patient Portals",
@@ -38,6 +46,7 @@ const industries = [
           "Access to test results and medical records.",
           "Prescription refill requests and medication management.",
         ],
+        imageUrl: "/images/healthcare-analytics-platform.jpeg",
       },
       {
         name: "Telemedicine Apps",
@@ -49,6 +58,7 @@ const industries = [
           "Secure video consultations with end-to-end encryption.",
           "Integration with EHR systems for seamless documentation.",
         ],
+        imageUrl: "/images/digital-workspace.jpeg",
       },
     ],
     challenges: [
@@ -99,6 +109,7 @@ const industries = [
           "Integrated financial and operational management.",
           "Supply chain optimization for oil and gas logistics.",
         ],
+        imageUrl: "/images/manufacturing-cloud-system.jpeg",
       },
       {
         name: "Asset Tracking",
@@ -110,6 +121,7 @@ const industries = [
           "Real-time equipment monitoring and diagnostics.",
           "Predictive maintenance scheduling based on usage patterns.",
         ],
+        imageUrl: "/images/manufacturing-digital-strategy.jpeg",
       },
       {
         name: "Predictive Maintenance",
@@ -121,6 +133,7 @@ const industries = [
           "Sensor integration for real-time equipment monitoring.",
           "Maintenance history tracking and analysis.",
         ],
+        imageUrl: "/images/modern-server-rack.png",
       },
     ],
     challenges: [
@@ -171,6 +184,7 @@ const industries = [
           "Omnichannel customer experience capabilities.",
           "Scalable architecture to support growth.",
         ],
+        imageUrl: "/images/financial-cloud-dashboard.jpeg",
       },
       {
         name: "Risk Management",
@@ -182,6 +196,7 @@ const industries = [
           "Stress testing and scenario analysis capabilities.",
           "Regulatory reporting and compliance management.",
         ],
+        imageUrl: "/images/financial-security-dashboard.jpeg",
       },
       {
         name: "Fraud Detection",
@@ -193,6 +208,7 @@ const industries = [
           "Real-time transaction monitoring and alerts.",
           "Adaptive learning algorithms that evolve with new fraud tactics.",
         ],
+        imageUrl: "/images/digital-shield.png",
       },
     ],
     challenges: [
@@ -224,9 +240,324 @@ const industries = [
       },
     ],
   },
+  {
+    id: "government",
+    name: "Government",
+    icon: <Building className="h-8 w-8 text-[#0055b3]" />,
+    description: "Digital transformation solutions for government agencies.",
+    longDescription:
+      "Our government technology solutions are designed to enhance citizen services, improve operational efficiency, and ensure security and compliance. From public service portals to digital ID systems, we provide the tools government agencies need to deliver better services in the digital age.",
+    image: "/images/diverse-team-planning.jpeg",
+    systems: [
+      {
+        name: "Public Service Portals",
+        description:
+          "Our public service portals provide citizens with easy access to government services, information, and resources, enhancing transparency and efficiency.",
+        features: [
+          "Automated benefits calculation and disbursement systems.",
+          "Public feedback and engagement platforms.",
+          "Multi-language support and accessibility features.",
+          "Integration with existing government databases.",
+        ],
+        imageUrl: "/images/tech-presentation.jpeg",
+      },
+      {
+        name: "Digital ID Systems",
+        description:
+          "Our digital ID systems provide secure and reliable identity verification for citizens, enabling access to government services and enhancing security.",
+        features: [
+          "Nationwide digital ID management with multi-factor authentication.",
+          "Secure data storage solutions with end-to-end encryption.",
+          "Biometric verification capabilities.",
+          "Integration with existing identity databases.",
+        ],
+        imageUrl: "/images/digital-fortress.png",
+      },
+      {
+        name: "Workflow Automation",
+        description:
+          "Our workflow automation solutions streamline government processes, reducing paperwork, improving efficiency, and enhancing service delivery.",
+        features: [
+          "Integration with existing government databases for seamless data transfer.",
+          "Customizable workflow engines for different government departments.",
+          "Document management and digital signature capabilities.",
+          "Audit trails and compliance reporting.",
+        ],
+        imageUrl: "/images/office-collaboration.jpeg",
+      },
+    ],
+    challenges: [
+      "Managing sensitive citizen data securely",
+      "Ensuring compliance with government regulations",
+      "Integrating with legacy government systems",
+      "Providing accessible services to all citizens",
+    ],
+    caseStudies: [
+      {
+        title: "Municipal Government",
+        description:
+          "Implemented a comprehensive citizen service portal that improved service delivery and reduced administrative costs by 35%.",
+        results: [
+          "35% reduction in administrative costs",
+          "50% improvement in service delivery time",
+          "92% citizen satisfaction rate",
+        ],
+      },
+      {
+        title: "Federal Agency",
+        description:
+          "Developed a secure digital ID system that enhanced security and streamlined access to government services.",
+        results: [
+          "70% reduction in identity fraud",
+          "60% improvement in service access time",
+          "Enhanced compliance with security regulations",
+        ],
+      },
+    ],
+  },
+  {
+    id: "real-estate",
+    name: "Real Estate & Property Management",
+    icon: <Home className="h-8 w-8 text-[#0055b3]" />,
+    description: "Comprehensive solutions for property management and real estate businesses.",
+    longDescription:
+      "Our real estate technology solutions are designed to streamline property management, enhance customer experiences, and optimize operations for real estate businesses. From CRM systems to virtual tours, we provide the tools needed to succeed in today's competitive real estate market.",
+    image: "/images/modern-workspace.jpeg",
+    systems: [
+      {
+        name: "CRM for Real Estate",
+        description:
+          "Our CRM solutions for real estate businesses help manage client relationships, track leads, and streamline sales processes, enhancing efficiency and growth.",
+        features: [
+          "Advanced lead generation tools using AI to predict buyer preferences.",
+          "Dynamic client interaction trackers for personalized follow-ups.",
+          "Integration with property listing platforms.",
+          "Mobile access for agents in the field.",
+        ],
+        imageUrl: "/images/business-workshop.jpeg",
+      },
+      {
+        name: "Listing Platforms",
+        description:
+          "Our listing platforms provide real estate businesses with powerful tools to showcase properties, attract buyers, and streamline the selling process.",
+        features: [
+          "AI-enhanced property recommendation engines.",
+          "Multi-platform listing syndication tools.",
+          "Virtual tour integration.",
+          "Advanced search and filtering capabilities.",
+        ],
+        imageUrl: "/images/ecommerce-platform.jpeg",
+      },
+      {
+        name: "Virtual Tours",
+        description:
+          "Our virtual tour solutions enable real estate businesses to showcase properties remotely, enhancing buyer engagement and expanding market reach.",
+        features: [
+          "3D modeling tools for creating on-demand property walkthroughs.",
+          "Integration with virtual reality platforms for remote viewing.",
+          "Interactive floor plans and property features.",
+          "Analytics to track viewer engagement and interest.",
+        ],
+        imageUrl: "/images/tech-meeting.jpeg",
+      },
+      {
+        name: "Tenant Management",
+        description:
+          "Our tenant management solutions streamline property management operations, enhancing efficiency, tenant satisfaction, and profitability.",
+        features: [
+          "Automated rent collection and escalation systems.",
+          "Smart property management solutions for utilities and maintenance requests.",
+          "Tenant communication and engagement tools.",
+          "Financial reporting and analytics.",
+        ],
+        imageUrl: "/images/modern-workspace.jpeg",
+      },
+    ],
+    challenges: [
+      "Managing complex property portfolios",
+      "Streamlining tenant communications and maintenance",
+      "Enhancing property marketing and visibility",
+      "Optimizing rental income and property value",
+    ],
+    caseStudies: [
+      {
+        title: "National Property Management Firm",
+        description:
+          "Implemented a comprehensive tenant management system that improved tenant satisfaction and reduced vacancy rates.",
+        results: [
+          "25% reduction in vacancy rates",
+          "40% improvement in maintenance response time",
+          "30% increase in tenant retention",
+        ],
+      },
+      {
+        title: "Luxury Real Estate Agency",
+        description:
+          "Developed a virtual tour platform that expanded market reach and increased property sales during the pandemic.",
+        results: [
+          "200% increase in virtual property viewings",
+          "35% reduction in time-to-sale",
+          "45% increase in out-of-state buyers",
+        ],
+      },
+    ],
+  },
+  {
+    id: "logistics",
+    name: "Logistics & Transportation",
+    icon: <Truck className="h-8 w-8 text-[#0055b3]" />,
+    description: "Optimized solutions for logistics and transportation companies.",
+    longDescription:
+      "Our logistics and transportation technology solutions are designed to optimize routes, enhance visibility, and improve efficiency across the supply chain. From supply chain automation to route optimization, we provide the tools needed to succeed in today's competitive logistics industry.",
+    image: "/images/team-collaboration.jpeg",
+    systems: [
+      {
+        name: "Supply Chain Automation",
+        description:
+          "Our supply chain automation solutions streamline logistics operations, enhancing visibility, efficiency, and responsiveness across the entire supply chain.",
+        features: [
+          "Blockchain for secure and transparent supply chain tracking.",
+          "AI-powered inventory management systems for dynamic stocking.",
+          "Real-time shipment tracking and monitoring.",
+          "Integration with supplier and customer systems.",
+        ],
+        imageUrl: "/images/interconnected-solutions.png",
+      },
+      {
+        name: "Route Optimization",
+        description:
+          "Our route optimization solutions leverage advanced algorithms to identify the most efficient routes, reducing costs, time, and environmental impact.",
+        features: [
+          "Machine learning models for predicting the best routes under varying conditions.",
+          "Integrated fleet management systems with GPS and vehicle telemetry.",
+          "Real-time traffic and weather data integration.",
+          "Driver performance monitoring and optimization.",
+        ],
+        imageUrl: "/images/interconnected-data-flow.png",
+      },
+    ],
+    challenges: [
+      "Managing complex logistics networks",
+      "Optimizing routes and delivery schedules",
+      "Ensuring visibility across the supply chain",
+      "Reducing transportation costs and environmental impact",
+    ],
+    caseStudies: [
+      {
+        title: "Global Logistics Provider",
+        description:
+          "Implemented a comprehensive route optimization system that reduced fuel consumption and improved delivery times.",
+        results: [
+          "20% reduction in fuel consumption",
+          "30% improvement in on-time deliveries",
+          "15% decrease in transportation costs",
+        ],
+      },
+      {
+        title: "E-commerce Fulfillment Company",
+        description:
+          "Developed a supply chain automation platform that enhanced visibility and streamlined operations across multiple warehouses.",
+        results: [
+          "40% improvement in inventory accuracy",
+          "25% reduction in order fulfillment time",
+          "60% decrease in shipping errors",
+        ],
+      },
+    ],
+  },
+  {
+    id: "retail",
+    name: "Retail & E-Commerce",
+    icon: <ShoppingBag className="h-8 w-8 text-[#0055b3]" />,
+    description: "Innovative solutions for modern retail and e-commerce businesses.",
+    longDescription:
+      "Our retail and e-commerce technology solutions are designed to enhance customer experiences, optimize inventory management, and drive sales growth. From custom e-commerce platforms to inventory management systems, we provide the tools needed to succeed in today's competitive retail landscape.",
+    image: "/images/data-analytics-team.jpeg",
+    systems: [
+      {
+        name: "Custom E-commerce Platforms",
+        description:
+          "Our custom e-commerce platforms provide retailers with powerful tools to sell online, manage inventory, and deliver exceptional customer experiences.",
+        features: [
+          "Omnichannel retail solutions for seamless shopping experiences.",
+          "AI-driven personalization engines for product recommendations.",
+          "Mobile-first design for optimal user experience.",
+          "Integration with payment gateways and shipping providers.",
+        ],
+        imageUrl: "/images/ecommerce-platform.jpeg",
+      },
+      {
+        name: "POS Systems",
+        description:
+          "Our point-of-sale systems streamline retail operations, enhancing checkout efficiency, inventory management, and customer engagement.",
+        features: [
+          "Cloud-based POS for flexibility and scalability.",
+          "Advanced customer loyalty and reward systems.",
+          "Inventory management integration.",
+          "Sales analytics and reporting.",
+        ],
+        imageUrl: "/images/retail-analytics-dashboard.jpeg",
+      },
+      {
+        name: "Inventory Management",
+        description:
+          "Our inventory management solutions provide retailers with real-time visibility and control over their inventory, optimizing stock levels and reducing costs.",
+        features: [
+          "Automated warehousing solutions using robots and AI.",
+          "Detailed analytics dashboards for inventory trends and forecasts.",
+          "Multi-location inventory tracking and management.",
+          "Integration with suppliers for automated reordering.",
+        ],
+        imageUrl: "/images/retail-it-transformation.jpeg",
+      },
+    ],
+    challenges: [
+      "Meeting evolving customer expectations",
+      "Managing inventory across multiple channels",
+      "Competing with large online marketplaces",
+      "Personalizing customer experiences at scale",
+    ],
+    caseStudies: [
+      {
+        title: "Multi-Channel Retailer",
+        description:
+          "Implemented an omnichannel retail solution that unified online and in-store experiences, increasing sales and customer satisfaction.",
+        results: [
+          "35% increase in cross-channel sales",
+          "40% improvement in inventory turnover",
+          "28% increase in customer lifetime value",
+        ],
+      },
+      {
+        title: "Specialty E-commerce Brand",
+        description:
+          "Developed a custom e-commerce platform with personalization features that significantly improved conversion rates and average order value.",
+        results: [
+          "45% increase in conversion rate",
+          "30% higher average order value",
+          "60% improvement in customer retention",
+        ],
+      },
+    ],
+  },
 ]
 
 export default function IndustryDetailPage({ params }: { params: { id: string } }) {
+  const [selectedSystem, setSelectedSystem] = useState<SystemDetailsProps | null>(null)
+  const [dialogOpen, setDialogOpen] = useState(false)
+
+  const openSystemDetails = (system: SystemDetailsProps) => {
+    // Create a new object to avoid reference issues
+    const processedSystem = {
+      ...system,
+      // Set to null if empty or undefined
+      imageUrl: system.imageUrl && system.imageUrl.trim() !== "" ? system.imageUrl : null,
+    }
+
+    setSelectedSystem(processedSystem)
+    setDialogOpen(true)
+  }
+
   const industry = industries.find((i) => i.id === params.id)
 
   if (!industry) {
@@ -262,7 +593,11 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
                 </div>
               </div>
               <div className="relative h-[300px] md:h-[400px] overflow-hidden rounded-lg">
-                <Image src={industry.image || "/placeholder.svg"} alt={industry.name} fill className="object-cover" />
+                {industry.image && industry.image.trim() !== "" ? (
+                  <Image src={industry.image || "/placeholder.svg"} alt={industry.name} fill className="object-cover" />
+                ) : (
+                  <Image src={FALLBACK_IMAGE || "/placeholder.svg"} alt={industry.name} fill className="object-cover" />
+                )}
               </div>
             </div>
           </div>
@@ -289,7 +624,16 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
                       ))}
                     </ul>
                   </div>
-                  <Button variant="outline" className="w-full mt-6">
+                  <Button
+                    variant="outline"
+                    className="w-full mt-6"
+                    onClick={() =>
+                      openSystemDetails({
+                        ...system,
+                        industry: industry.name,
+                      })
+                    }
+                  >
                     Learn More
                   </Button>
                 </CardContent>
@@ -299,6 +643,7 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
         </div>
       </section>
 
+      {/* Rest of the component remains unchanged */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
         <div className="container px-4 md:px-6">
           <div className="grid gap-12 md:grid-cols-2">
@@ -415,6 +760,9 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
           </div>
         </div>
       </section>
+
+      {/* System Details Dialog */}
+      <SystemDetailsDialog system={selectedSystem} open={dialogOpen} onOpenChange={setDialogOpen} />
     </>
   )
 }
