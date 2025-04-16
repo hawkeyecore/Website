@@ -62,8 +62,7 @@
     "bcryptjs": "latest",
     "jose": "latest",
     "pg": "latest",
-    "http": "latest",
-    "url": "latest"
+    "express": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
