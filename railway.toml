@@ -6,4 +6,7 @@ buildCommand = "npm install && npm run build"
 startCommand = "node server.js"
 healthcheckPath = "/"
 healthcheckTimeout = 100
-# Removed the invalid restartPolicyType field
+restartPolicyType = "never"
+
+[nixpacks]
+install-cmd = "npm install"
