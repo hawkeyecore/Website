@@ -1,12 +1,18 @@
-FROM node:20-slim
+# Use a specific Node.js version
+FROM node:20.11-slim
 
+# Set working directory
 WORKDIR /app
 
-# Copy package files
+# Increase Node.js memory limit
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
+# Copy package files first (for better layer caching)
 COPY package.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies with more verbose output and CI mode
+RUN npm config set loglevel verbose && \
+    npm ci --no-audit --no-fund || npm install --no-audit --no-fund
 
 # Copy the rest of the application
 COPY . .

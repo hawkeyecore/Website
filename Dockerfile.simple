@@ -1,0 +1,22 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies first, leveraging Docker cache
+COPY package.json ./
+COPY package-lock.json* ./
+
+# Install dependencies with fallback
+RUN npm ci || npm install
+
+# Copy application code
+COPY . .
+
+# Build application
+RUN npm run build
+
+# Expose port
+EXPOSE 3000
+
+# Start the application
+CMD ["node", "server.js"]

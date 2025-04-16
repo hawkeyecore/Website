@@ -64,7 +64,9 @@
     "express": "latest",
     "http": "latest",
     "url": "latest",
-    "pg": "latest"
+    "pg": "latest",
+    "fs": "latest",
+    "child_process": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
