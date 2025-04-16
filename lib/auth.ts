@@ -1,64 +1,98 @@
+import { SignJWT, jwtVerify } from "jose"
 import { cookies } from "next/headers"
-import { jwtVerify, SignJWT } from "jose"
+import type { NextRequest } from "next/server"
 import bcrypt from "bcryptjs"
 
-const secret = process.env.JWT_SECRET
+const JWT_SECRET = process.env.JWT_SECRET || process.env.JWT_SECRET_KEY || "fallback-secret-for-development-only"
 
-async function verifyAuth(request: Request) {
-  const token = cookies().get("token")?.value
+// Hash password
+export async function hashPassword(password: string): Promise<string> {
+  return bcrypt.hash(password, 10)
+}
 
-  if (!token) {
-    return null
-  }
-
+// Compare password with hash
+export async function comparePasswords(password: string, hashedPassword: string): Promise<boolean> {
   try {
-    const verified = await jwtVerify(token, new TextEncoder().encode(secret))
-    return verified.payload as { id: string; email: string; role: string }
-  } catch (err) {
-    return null
+    return await bcrypt.compare(password, hashedPassword)
+  } catch (error) {
+    console.error("Password comparison error:", error)
+    return false
   }
 }
 
-async function getCurrentUser() {
-  const token = cookies().get("token")?.value
-
-  if (!token) {
-    return null
-  }
-
+// Create session (set JWT cookie)
+export async function createSession(userId: number, email: string, role: string) {
   try {
-    const verified = await jwtVerify(token, new TextEncoder().encode(secret))
-    return verified.payload as { id: string; email: string; role: string; name: string }
-  } catch (err) {
+    // Create JWT
+    const token = await new SignJWT({ userId, email, role })
+      .setProtectedHeader({ alg: "HS256" })
+      .setIssuedAt()
+      .setExpirationTime("8h")
+      .sign(new TextEncoder().encode(JWT_SECRET))
+
+    // Set cookie
+    cookies().set({
+      name: "session",
+      value: token,
+      httpOnly: true,
+      path: "/",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 8, // 8 hours
+    })
+
+    return true
+  } catch (error) {
+    console.error("Session creation error:", error)
+    return false
+  }
+}
+
+// Verify auth from request
+export async function verifyAuth(request: NextRequest) {
+  try {
+    const token = request.cookies.get("session")?.value
+
+    if (!token) {
+      return { valid: false }
+    }
+
+    const verified = await jwtVerify(token, new TextEncoder().encode(JWT_SECRET))
+    return { valid: true, payload: verified.payload }
+  } catch (error) {
+    console.error("Auth verification error:", error)
+    return { valid: false }
+  }
+}
+
+// Get current user from request
+export async function getCurrentUser(request?: NextRequest) {
+  try {
+    if (!request) return null
+    const result = await verifyAuth(request)
+    if (!result.valid) {
+      return null
+    }
+    return result.payload
+  } catch (error) {
+    console.error("Get current user error:", error)
     return null
   }
 }
 
-async function createSession(userId: number, email: string, role: string) {
-  const iat = Math.floor(Date.now() / 1000)
-  const exp = iat + 60 * 60 * 24 * 7 // 7 days
-
-  const token = await new SignJWT({ id: userId.toString(), email, role })
-    .setProtectedHeader({ alg: "HS256", typ: "JWT" })
-    .setExpirationTime(exp)
-    .setIssuedAt(iat)
-    .setNotBefore(iat)
-    .sign(new TextEncoder().encode(secret))
-
-  cookies().set("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-  })
+// Logout (clear session cookie)
+export async function logOut() {
+  try {
+    cookies().set({
+      name: "session",
+      value: "",
+      httpOnly: true,
+      path: "/",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 0,
+    })
+    return true
+  } catch (error) {
+    console.error("Logout error:", error)
+    return false
+  }
 }
-
-async function comparePasswords(plainTextPassword: string, hashedPassword: string): Promise<boolean> {
-  return bcrypt.compare(plainTextPassword, hashedPassword)
-}
-
-async function logOut() {
-  cookies().delete("token")
-}
-
-export { verifyAuth, getCurrentUser, createSession, comparePasswords, logOut }

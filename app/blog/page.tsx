@@ -15,10 +15,10 @@ async function getBlogPosts() {
       WHERE bp.status = 'published'
       ORDER BY bp.created_at DESC
     `
-    return query(sql) as Promise<any[]>
+    return (await query(sql)) as any[]
   } catch (error) {
     console.error("Error fetching blog posts:", error)
-    // Return fallback data for build time
+    // Return empty array on error
     return []
   }
 }

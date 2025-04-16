@@ -2,6 +2,57 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, ArrowLeft } from "lucide-react"
+import { CaseStudyDialog, type CaseStudyProps } from "@/components/case-study-dialog"
+
+// Define case studies data
+const caseStudies: CaseStudyProps[] = [
+  {
+    title: "Healthcare Provider Portal",
+    client: "MedCare Solutions",
+    industry: "Healthcare",
+    challenge:
+      "MedCare Solutions was struggling with an outdated patient management system that was causing inefficiencies, long wait times, and frustration among both staff and patients. They needed a modern, user-friendly solution that could streamline their operations while ensuring compliance with healthcare regulations.",
+    solution:
+      "We developed a custom patient management portal that integrated with their existing systems while adding new features like online appointment scheduling, secure patient communications, and automated billing. The system was built with a focus on user experience and included comprehensive training for all staff members.",
+    results: [
+      "35% increase in operational efficiency",
+      "Reduced patient wait times by 40%",
+      "98% user satisfaction rate",
+      "Decreased administrative workload by 25%",
+      "Improved patient data security and HIPAA compliance",
+    ],
+    testimonial: {
+      quote:
+        "The patient portal has transformed how we operate. Our staff can focus more on patient care rather than paperwork, and our patients love the convenience of the online features.",
+      author: "Dr. Sarah Johnson",
+      position: "Chief Medical Officer, MedCare Solutions",
+    },
+    imageUrl: "/images/healthcare-dashboard.jpeg",
+  },
+  {
+    title: "E-commerce Platform",
+    client: "Global Retail Inc.",
+    industry: "Retail",
+    challenge:
+      "Global Retail Inc. was losing market share to competitors with more advanced online shopping experiences. Their legacy e-commerce platform was slow, difficult to navigate, and lacked modern features, resulting in high cart abandonment rates and declining sales.",
+    solution:
+      "We built a scalable, feature-rich e-commerce platform with advanced product filtering, personalized recommendations, seamless checkout, and comprehensive inventory management. The solution included mobile optimization and integration with their existing ERP and CRM systems.",
+    results: [
+      "150% increase in online sales within 6 months",
+      "60% reduction in cart abandonment",
+      "Seamless integration with inventory systems",
+      "45% increase in average order value",
+      "Improved customer retention and loyalty",
+    ],
+    testimonial: {
+      quote:
+        "The new platform has exceeded our expectations. Not only have our sales increased dramatically, but we're also seeing higher customer satisfaction and repeat purchases.",
+      author: "Michael Chen",
+      position: "VP of Digital Commerce, Global Retail Inc.",
+    },
+    imageUrl: "/images/ecommerce-platform.jpeg",
+  },
+]
 
 export default function SoftwareDevelopmentPage() {
   return (
@@ -187,54 +238,24 @@ export default function SoftwareDevelopmentPage() {
         <div className="container px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Case Studies</h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="border rounded-lg p-6 space-y-4">
-              <h3 className="text-2xl font-bold">Healthcare Provider Portal</h3>
-              <p className="text-muted-foreground">
-                Developed a custom patient management system that improved operational efficiency by 35%.
-              </p>
-              <div>
-                <h4 className="font-medium mb-2">Results:</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>35% increase in operational efficiency</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>Reduced patient wait times by 40%</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>98% user satisfaction rate</span>
-                  </li>
-                </ul>
+            {caseStudies.map((caseStudy, index) => (
+              <div key={index} className="border rounded-lg p-6 space-y-4">
+                <h3 className="text-2xl font-bold">{caseStudy.title}</h3>
+                <p className="text-muted-foreground">{caseStudy.challenge.substring(0, 150)}...</p>
+                <div>
+                  <h4 className="font-medium mb-2">Results:</h4>
+                  <ul className="space-y-2">
+                    {caseStudy.results.slice(0, 3).map((result, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
+                        <span>{result}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <CaseStudyDialog caseStudy={caseStudy} />
               </div>
-              <Button variant="outline">Read Full Case Study</Button>
-            </div>
-            <div className="border rounded-lg p-6 space-y-4">
-              <h3 className="text-2xl font-bold">E-commerce Platform</h3>
-              <p className="text-muted-foreground">
-                Built a scalable e-commerce solution that helped our client increase online sales by 150%.
-              </p>
-              <div>
-                <h4 className="font-medium mb-2">Results:</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>150% increase in online sales</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>60% reduction in cart abandonment</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>Seamless integration with inventory systems</span>
-                  </li>
-                </ul>
-              </div>
-              <Button variant="outline">Read Full Case Study</Button>
-            </div>
+            ))}
           </div>
         </div>
       </section>

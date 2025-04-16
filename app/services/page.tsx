@@ -4,6 +4,24 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Our Services | Technology Solutions",
+  description:
+    "Comprehensive technology services to help your business grow and innovate. Explore our software development, cloud solutions, data analytics, cybersecurity, and consulting services.",
+  keywords: [
+    "technology services",
+    "software development",
+    "cloud solutions",
+    "data analytics",
+    "cybersecurity",
+    "IT consulting",
+  ],
+  alternates: {
+    canonical: "https://hawkeye-core.com/services",
+  },
+}
 
 export default function ServicesPage() {
   // Sample services data

@@ -2,6 +2,23 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Layers, Code, BarChart, Building, Activity, Droplet, Landmark } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Innovative Technology Solutions for Your Business",
+  description:
+    "Empowering businesses with cutting-edge technology and expert services to drive growth and innovation. Explore our services, industry solutions, and products.",
+  keywords: [
+    "technology solutions",
+    "software development",
+    "IT services",
+    "digital transformation",
+    "business technology",
+  ],
+  alternates: {
+    canonical: "https://hawkeye-core.com",
+  },
+}
 
 export default function Home() {
   return (
@@ -28,7 +45,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <Image
                 src="/images/modern-workspace.jpeg"
-                alt="Modern Tech Workspace"
+                alt="Modern Tech Workspace with computers and collaborative environment"
                 width={550}
                 height={550}
                 className="rounded-lg object-cover"

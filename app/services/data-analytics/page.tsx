@@ -2,12 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, ArrowLeft } from "lucide-react"
-import { CaseStudyCard } from "@/components/case-study-dialog"
+import { CaseStudyDialog, type CaseStudyProps } from "@/components/case-study-dialog"
 
 // Define case studies data
-const caseStudies = [
+const caseStudies: CaseStudyProps[] = [
   {
-    id: 1,
     title: "Retail Chain Analytics",
     client: "Urban Retail Group",
     industry: "Retail",
@@ -31,7 +30,6 @@ const caseStudies = [
     imageUrl: "/images/retail-analytics-dashboard.jpeg",
   },
   {
-    id: 2,
     title: "Healthcare Provider Analytics",
     client: "Midwest Health Network",
     industry: "Healthcare",
@@ -235,8 +233,23 @@ export default function DataAnalyticsPage() {
         <div className="container px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Case Studies</h2>
           <div className="grid gap-8 md:grid-cols-2">
-            {caseStudies.map((caseStudy) => (
-              <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} />
+            {caseStudies.map((caseStudy, index) => (
+              <div key={index} className="border rounded-lg p-6 space-y-4">
+                <h3 className="text-2xl font-bold">{caseStudy.title}</h3>
+                <p className="text-muted-foreground">{caseStudy.challenge.substring(0, 150)}...</p>
+                <div>
+                  <h4 className="font-medium mb-2">Results:</h4>
+                  <ul className="space-y-2">
+                    {caseStudy.results.slice(0, 3).map((result, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
+                        <span>{result}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <CaseStudyDialog caseStudy={caseStudy} />
+              </div>
             ))}
           </div>
         </div>
@@ -259,6 +272,13 @@ export default function DataAnalyticsPage() {
                   Schedule a Consultation
                 </Button>
               </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
+              >
+                Contact Sales
+              </Button>
             </div>
           </div>
         </div>
