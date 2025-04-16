@@ -61,6 +61,7 @@
     "pg-native": "latest",
     "bcryptjs": "latest",
     "jose": "latest",
+    "express": "latest",
     "http": "latest",
     "url": "latest",
     "pg": "latest"

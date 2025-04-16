@@ -1,0 +1,3 @@
+1. Delete pnpm-lock.yaml if it exists in your project
+2. Delete node_modules folder if it exists
+3. Delete .pnpm-store if it exists
