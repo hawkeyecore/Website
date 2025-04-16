@@ -6,7 +6,6 @@ buildCommand = "npm install && npm run build"
 startCommand = "node server.js"
 healthcheckPath = "/"
 healthcheckTimeout = 100
-restartPolicyType = "never"
 
 [nixpacks]
 install-cmd = "npm install"
