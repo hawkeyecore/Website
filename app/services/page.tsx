@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -11,7 +10,6 @@ export default function ServicesPage() {
     {
       id: 1,
       name: "Software Development",
-      slug: "software-development",
       description: "Custom software solutions tailored to your business needs.",
       longDescription:
         "Our expert development team creates custom software solutions that address your unique business challenges. From web and mobile applications to enterprise systems, we deliver high-quality, scalable software that drives efficiency and growth.",
@@ -26,7 +24,6 @@ export default function ServicesPage() {
     {
       id: 2,
       name: "Cloud Solutions",
-      slug: "cloud-solutions",
       description: "Scalable cloud infrastructure and migration services.",
       longDescription:
         "Transform your business with our comprehensive cloud solutions. We help you migrate to the cloud, optimize your infrastructure, and implement cloud-native applications that scale with your business while reducing operational costs.",
@@ -41,7 +38,6 @@ export default function ServicesPage() {
     {
       id: 3,
       name: "Data Analytics",
-      slug: "data-analytics",
       description: "Turn your data into actionable insights for better decision-making.",
       longDescription:
         "Unlock the power of your data with our advanced analytics services. We help you collect, process, and analyze data to extract valuable insights that drive informed business decisions and create competitive advantages.",
@@ -56,7 +52,6 @@ export default function ServicesPage() {
     {
       id: 4,
       name: "Cybersecurity",
-      slug: "cybersecurity",
       description: "Protect your business with our comprehensive security solutions.",
       longDescription:
         "Safeguard your digital assets with our end-to-end cybersecurity services. We provide threat assessment, security implementation, and ongoing monitoring to protect your business from evolving cyber threats.",
@@ -71,7 +66,6 @@ export default function ServicesPage() {
     {
       id: 5,
       name: "IT Consulting",
-      slug: "it-consulting",
       description: "Strategic technology guidance to help your business thrive.",
       longDescription:
         "Our experienced consultants provide strategic guidance on technology investments, digital transformation, and IT governance. We help you align your technology strategy with your business goals to maximize ROI and drive growth.",
@@ -86,7 +80,6 @@ export default function ServicesPage() {
     {
       id: 6,
       name: "Managed IT Services",
-      slug: "managed-it-services",
       description: "Comprehensive IT support and management for your business.",
       longDescription:
         "Focus on your core business while we take care of your IT infrastructure. Our managed services include proactive monitoring, maintenance, and support to ensure your systems run smoothly and efficiently at all times.",
@@ -242,9 +235,7 @@ function ServiceCard({ service }: { service: any }) {
               ))}
             </ul>
           </div>
-          <Link href={`/services/${service.slug}`}>
-            <Button className="w-full">Learn More</Button>
-          </Link>
+          <Button className="w-full">Learn More</Button>
         </div>
       </CardContent>
     </Card>

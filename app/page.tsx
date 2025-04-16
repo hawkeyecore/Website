@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Layers, Code, BarChart, Building, Activity, Droplet, Landmark } from "lucide-react"
+import { ChevronRight, ArrowRight, Layers, Code, BarChart, Building, Activity, Droplet, Landmark } from "lucide-react"
 
 export default function Home() {
   return (
@@ -20,8 +20,11 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Button size="lg" className="gap-1">
+                  Get Started <ChevronRight className="h-4 w-4" />
+                </Button>
                 <Button size="lg" variant="outline">
-                  <Link href="/contact">Learn More</Link>
+                  Learn More
                 </Button>
               </div>
             </div>
@@ -194,35 +197,51 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-1">
-            <div className="group relative overflow-hidden rounded-lg border bg-background">
-              <div className="aspect-video overflow-hidden">
-                <Image
-                  src="/scheduling-dashboard-calendar.png"
-                  alt="Scheduling Dispatch"
-                  width={800}
-                  height={600}
-                  className="object-cover transition-transform group-hover:scale-105"
-                />
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "TechCloud Platform",
+                description: "A comprehensive cloud solution for businesses of all sizes.",
+                image: "/images/tech-meeting.jpeg",
+                link: "techcloud-platform",
+              },
+              {
+                title: "DataSense Analytics",
+                description: "Turn your data into actionable insights with our powerful analytics platform.",
+                image: "/images/digital-workspace.jpeg",
+                link: "datasense-analytics",
+              },
+              {
+                title: "SecureGuard Pro",
+                description: "Enterprise-grade security solution to protect your digital assets.",
+                image: "/images/office-collaboration.jpeg",
+                link: "secureguard-pro",
+              },
+            ].map((product, index) => (
+              <div key={index} className="group relative overflow-hidden rounded-lg border bg-background">
+                <div className="aspect-video overflow-hidden">
+                  <Image
+                    src={product.image || "/placeholder.svg"}
+                    alt={product.title}
+                    width={400}
+                    height={300}
+                    className="object-cover transition-transform group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold">{product.title}</h3>
+                  <p className="text-muted-foreground">{product.description}</p>
+                  <Link href={`/products/${product.link}`}>
+                    <Button variant="link" className="p-0 mt-4">
+                      Learn More
+                    </Button>
+                  </Link>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold">Scheduling Dispatch</h3>
-                <p className="text-muted-foreground">
-                  The Easiest Way to Manage Jobs & Teams. A smart job scheduling app that helps businesses assign tasks,
-                  track progress, and manage teams effortlessly.
-                </p>
-                <Link href="/products">
-                  <Button variant="link" className="p-0 mt-4">
-                    Learn More
-                  </Button>
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="flex justify-center">
-            <Link href="/products">
-              <Button size="lg">View All Products</Button>
-            </Link>
+            <Button size="lg">View All Products</Button>
           </div>
         </div>
       </section>
@@ -245,6 +264,13 @@ export default function Home() {
                   Contact Us
                 </Button>
               </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
+              >
+                Schedule a Demo
+              </Button>
             </div>
           </div>
         </div>

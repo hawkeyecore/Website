@@ -111,6 +111,11 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/careers" className="text-muted-foreground hover:text-foreground">
+                  Careers
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-foreground">
                   Contact
                 </Link>
@@ -128,6 +133,11 @@ export function SiteFooter() {
               <li>
                 <Link href="/products" className="text-muted-foreground hover:text-foreground">
                   Software
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" className="text-muted-foreground hover:text-foreground">
+                  Hardware
                 </Link>
               </li>
             </ul>
