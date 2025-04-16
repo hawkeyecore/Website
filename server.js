@@ -1,6 +1,5 @@
 // Absolute minimal HTTP server that responds to all requests
 const http = require("http")
-
 const port = process.env.PORT || 3000
 
 // Create a basic HTTP server
@@ -21,19 +20,4 @@ server.listen(port, "0.0.0.0", () => {
 // Handle server errors
 server.on("error", (err) => {
   console.error("Server error:", err)
-})
-
-// Log when the process exits
-process.on("exit", (code) => {
-  console.log(`Process exiting with code: ${code}`)
-})
-
-// Handle uncaught exceptions
-process.on("uncaughtException", (err) => {
-  console.error("Uncaught exception:", err)
-})
-
-// Handle unhandled promise rejections
-process.on("unhandledRejection", (reason, promise) => {
-  console.error("Unhandled Rejection at:", promise, "reason:", reason)
 })
