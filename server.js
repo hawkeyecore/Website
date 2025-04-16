@@ -1,4 +1,3 @@
-// Simple Express server that responds to all requests immediately
 const express = require("express")
 const next = require("next")
 
@@ -15,12 +14,9 @@ server.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" })
 })
 
-// Respond to root path immediately for Railway's health check
-server.get("/", (req, res, next) => {
-  if (!app.prepared) {
-    return res.status(200).send("Server starting...")
-  }
-  next()
+// Respond to root path for Railway's health check
+server.get("/", (req, res) => {
+  res.status(200).send("OK")
 })
 
 // Start server immediately before Next.js is ready
@@ -33,7 +29,6 @@ server.listen(port, "0.0.0.0", (err) => {
 app
   .prepare()
   .then(() => {
-    app.prepared = true
     console.log("> Next.js ready")
 
     // Handle all other requests with Next.js
@@ -44,3 +39,9 @@ app
   .catch((err) => {
     console.error("Error preparing Next.js app:", err)
   })
+
+// Error handling middleware
+server.use((err, req, res, next) => {
+  console.error("Unexpected error:", err)
+  res.status(500).send("Internal Server Error")
+})

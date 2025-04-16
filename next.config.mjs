@@ -20,13 +20,16 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    unoptimized: true, // Keep this if you don't need Next.js image optimization
   },
   experimental: {
+    // Remove experimental features if not critical
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  // Optional: Add trailingSlash for consistent URL behavior
+  trailingSlash: false,
 }
 
 if (userConfig) {
