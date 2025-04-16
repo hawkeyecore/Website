@@ -209,7 +209,9 @@ export default function SoftwareDevelopmentPage() {
                   </li>
                 </ul>
               </div>
-              <Button variant="outline">Read Full Case Study</Button>
+              <Button variant="outline" asChild>
+                <Link href="/case-studies/software-development-healthcare">Read Full Case Study</Link>
+              </Button>
             </div>
             <div className="border rounded-lg p-6 space-y-4">
               <h3 className="text-2xl font-bold">E-commerce Platform</h3>
@@ -233,7 +235,9 @@ export default function SoftwareDevelopmentPage() {
                   </li>
                 </ul>
               </div>
-              <Button variant="outline">Read Full Case Study</Button>
+              <Button variant="outline" asChild>
+                <Link href="/case-studies/software-development-ecommerce">Read Full Case Study</Link>
+              </Button>
             </div>
           </div>
         </div>

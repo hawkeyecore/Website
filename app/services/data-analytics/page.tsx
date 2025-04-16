@@ -204,7 +204,9 @@ export default function DataAnalyticsPage() {
                   </li>
                 </ul>
               </div>
-              <Button variant="outline">Read Full Case Study</Button>
+              <Button variant="outline" asChild>
+                <Link href="/case-studies/data-analytics-retail">Read Full Case Study</Link>
+              </Button>
             </div>
             <div className="border rounded-lg p-6 space-y-4">
               <h3 className="text-2xl font-bold">Healthcare Provider</h3>
@@ -228,7 +230,9 @@ export default function DataAnalyticsPage() {
                   </li>
                 </ul>
               </div>
-              <Button variant="outline">Read Full Case Study</Button>
+              <Button variant="outline" asChild>
+                <Link href="/case-studies/data-analytics-healthcare">Read Full Case Study</Link>
+              </Button>
             </div>
           </div>
         </div>

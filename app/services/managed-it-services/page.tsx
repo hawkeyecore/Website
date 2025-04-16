@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, ArrowLeft } from "lucide-react"
 
-export default function CloudSolutionsPage() {
+export default function ManagedITServicesPage() {
   return (
     <>
       <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
@@ -18,9 +18,9 @@ export default function CloudSolutionsPage() {
             </Link>
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-4">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Cloud Solutions</h1>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Managed IT Services</h1>
                 <p className="text-muted-foreground md:text-xl">
-                  Scalable cloud infrastructure and migration services.
+                  Comprehensive IT support and management for your business.
                 </p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link href="/contact">
@@ -32,7 +32,7 @@ export default function CloudSolutionsPage() {
                 </div>
               </div>
               <div className="relative h-[300px] md:h-[400px] overflow-hidden rounded-lg">
-                <Image src="/images/modern-workspace.jpeg" alt="Cloud Solutions" fill className="object-cover" />
+                <Image src="/images/corporate-training.jpeg" alt="Managed IT Services" fill className="object-cover" />
               </div>
             </div>
           </div>
@@ -43,39 +43,39 @@ export default function CloudSolutionsPage() {
         <div className="container px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="text-2xl font-bold mb-6">Our Cloud Solutions</h2>
+              <h2 className="text-2xl font-bold mb-6">Our Managed IT Services</h2>
               <p className="mb-6">
-                Transform your business with our comprehensive cloud solutions. We help you migrate to the cloud,
-                optimize your infrastructure, and implement cloud-native applications that scale with your business
-                while reducing operational costs.
+                Focus on your core business while we take care of your IT infrastructure. Our managed services include
+                proactive monitoring, maintenance, and support to ensure your systems run smoothly and efficiently at
+                all times.
               </p>
               <p className="mb-6">
-                Our cloud experts work with leading platforms including AWS, Microsoft Azure, and Google Cloud to
-                deliver tailored solutions that meet your specific business requirements.
+                Our team of experienced IT professionals provides round-the-clock support, ensuring that your technology
+                infrastructure is always operational, secure, and optimized for performance.
               </p>
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h3 className="text-xl font-medium">Cloud Migration</h3>
+                  <h3 className="text-xl font-medium">Help Desk Support</h3>
                   <p className="text-muted-foreground">
-                    Seamless migration of your existing infrastructure and applications to the cloud.
+                    24/7 technical support for your team, resolving issues quickly and efficiently.
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-xl font-medium">Cloud-Native Development</h3>
+                  <h3 className="text-xl font-medium">Network Management</h3>
                   <p className="text-muted-foreground">
-                    Building applications specifically designed to leverage cloud capabilities.
+                    Comprehensive monitoring and management of your network infrastructure.
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-xl font-medium">Multi-Cloud Management</h3>
+                  <h3 className="text-xl font-medium">System Administration</h3>
                   <p className="text-muted-foreground">
-                    Unified management of resources across multiple cloud providers.
+                    Proactive management of servers, workstations, and cloud resources.
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-xl font-medium">Cloud Security</h3>
+                  <h3 className="text-xl font-medium">Backup & Disaster Recovery</h3>
                   <p className="text-muted-foreground">
-                    Comprehensive security solutions to protect your cloud infrastructure and data.
+                    Robust backup solutions and disaster recovery planning to protect your data.
                   </p>
                 </div>
               </div>
@@ -86,36 +86,36 @@ export default function CloudSolutionsPage() {
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-6 w-6 text-[#00a3e0] mt-0.5" />
                   <div>
-                    <span className="text-lg font-medium">Reduced infrastructure costs</span>
+                    <span className="text-lg font-medium">Proactive monitoring and maintenance</span>
                     <p className="text-muted-foreground">
-                      Eliminate capital expenses and reduce operational costs with pay-as-you-go pricing models.
+                      Identify and resolve issues before they impact your business operations.
                     </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-6 w-6 text-[#00a3e0] mt-0.5" />
                   <div>
-                    <span className="text-lg font-medium">Improved scalability and flexibility</span>
+                    <span className="text-lg font-medium">Rapid issue resolution</span>
                     <p className="text-muted-foreground">
-                      Scale resources up or down based on demand, ensuring optimal performance at all times.
+                      Quick response times and efficient problem-solving to minimize downtime.
                     </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-6 w-6 text-[#00a3e0] mt-0.5" />
                   <div>
-                    <span className="text-lg font-medium">Enhanced security and compliance</span>
+                    <span className="text-lg font-medium">Predictable monthly costs</span>
                     <p className="text-muted-foreground">
-                      Leverage advanced security features and compliance certifications offered by cloud providers.
+                      Fixed monthly fees make budgeting easier and eliminate unexpected IT expenses.
                     </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-6 w-6 text-[#00a3e0] mt-0.5" />
                   <div>
-                    <span className="text-lg font-medium">24/7 monitoring and support</span>
+                    <span className="text-lg font-medium">Technology optimization</span>
                     <p className="text-muted-foreground">
-                      Continuous monitoring and expert support ensure your cloud environment runs smoothly.
+                      Continuous improvement of your IT infrastructure to enhance performance and security.
                     </p>
                   </div>
                 </li>
@@ -127,7 +127,7 @@ export default function CloudSolutionsPage() {
 
       <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
         <div className="container px-4 md:px-6">
-          <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Our Cloud Migration Process</h2>
+          <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Our Service Process</h2>
           <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-5">
             <div className="flex flex-col items-center text-center space-y-3">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0a1229] text-white text-xl font-bold">
@@ -135,7 +135,7 @@ export default function CloudSolutionsPage() {
               </div>
               <h3 className="text-xl font-bold">Assessment</h3>
               <p className="text-muted-foreground">
-                We evaluate your current infrastructure and applications to determine the best migration strategy.
+                We evaluate your current IT infrastructure and identify areas for improvement.
               </p>
             </div>
             <div className="flex flex-col items-center text-center space-y-3">
@@ -144,34 +144,34 @@ export default function CloudSolutionsPage() {
               </div>
               <h3 className="text-xl font-bold">Planning</h3>
               <p className="text-muted-foreground">
-                We develop a detailed migration plan, including timelines, resource requirements, and risk mitigation.
+                We develop a tailored service plan that meets your specific business needs.
               </p>
             </div>
             <div className="flex flex-col items-center text-center space-y-3">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0a1229] text-white text-xl font-bold">
                 3
               </div>
-              <h3 className="text-xl font-bold">Migration</h3>
+              <h3 className="text-xl font-bold">Implementation</h3>
               <p className="text-muted-foreground">
-                We execute the migration with minimal disruption to your business operations.
+                We deploy monitoring tools and establish support processes for your environment.
               </p>
             </div>
             <div className="flex flex-col items-center text-center space-y-3">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0a1229] text-white text-xl font-bold">
                 4
               </div>
-              <h3 className="text-xl font-bold">Optimization</h3>
+              <h3 className="text-xl font-bold">Management</h3>
               <p className="text-muted-foreground">
-                We optimize your cloud infrastructure for performance, cost, and security.
+                We provide ongoing monitoring, maintenance, and support for your IT systems.
               </p>
             </div>
             <div className="flex flex-col items-center text-center space-y-3">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0a1229] text-white text-xl font-bold">
                 5
               </div>
-              <h3 className="text-xl font-bold">Ongoing Management</h3>
+              <h3 className="text-xl font-bold">Optimization</h3>
               <p className="text-muted-foreground">
-                We provide continuous monitoring, maintenance, and optimization of your cloud environment.
+                We continuously improve your IT environment to enhance performance and security.
               </p>
             </div>
           </div>
@@ -183,55 +183,55 @@ export default function CloudSolutionsPage() {
           <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Case Studies</h2>
           <div className="grid gap-8 md:grid-cols-2">
             <div className="border rounded-lg p-6 space-y-4">
-              <h3 className="text-2xl font-bold">Financial Services Firm</h3>
+              <h3 className="text-2xl font-bold">Retail Chain</h3>
               <p className="text-muted-foreground">
-                Migrated critical applications to the cloud, resulting in 40% cost savings and improved performance.
+                Implemented comprehensive managed IT services that improved uptime and reduced IT costs.
               </p>
               <div>
                 <h4 className="font-medium mb-2">Results:</h4>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>40% reduction in infrastructure costs</span>
+                    <span>99.9% system uptime achieved</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>99.99% uptime</span>
+                    <span>35% reduction in IT support costs</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>Enhanced disaster recovery capabilities</span>
+                    <span>70% faster issue resolution time</span>
                   </li>
                 </ul>
               </div>
               <Button variant="outline" asChild>
-                <Link href="/case-studies/cloud-solutions-financial">Read Full Case Study</Link>
+                <Link href="/case-studies/managed-it-retail">Read Full Case Study</Link>
               </Button>
             </div>
             <div className="border rounded-lg p-6 space-y-4">
-              <h3 className="text-2xl font-bold">Manufacturing Company</h3>
+              <h3 className="text-2xl font-bold">Law Firm</h3>
               <p className="text-muted-foreground">
-                Implemented a hybrid cloud solution that improved scalability while maintaining compliance requirements.
+                Provided managed IT services that ensured data security and compliance with industry regulations.
               </p>
               <div>
                 <h4 className="font-medium mb-2">Results:</h4>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>Reduced deployment time by 70%</span>
+                    <span>100% compliance with legal data regulations</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>Improved resource utilization by 45%</span>
+                    <span>Zero security breaches</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                    <span>Seamless scaling during peak periods</span>
+                    <span>Improved attorney productivity</span>
                   </li>
                 </ul>
               </div>
               <Button variant="outline" asChild>
-                <Link href="/case-studies/cloud-solutions-manufacturing">Read Full Case Study</Link>
+                <Link href="/case-studies/managed-it-legal">Read Full Case Study</Link>
               </Button>
             </div>
           </div>
@@ -242,9 +242,9 @@ export default function CloudSolutionsPage() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Ready to move to the cloud?</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Ready to optimize your IT operations?</h2>
               <p className="max-w-[900px] md:text-xl/relaxed">
-                Contact us today to discuss how our cloud solutions can transform your business.
+                Contact us today to discuss how our managed IT services can support your business growth.
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">

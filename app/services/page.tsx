@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle } from "lucide-react"
+import Link from "next/link"
 
 export default function ServicesPage() {
   // Sample services data
@@ -235,7 +236,9 @@ function ServiceCard({ service }: { service: any }) {
               ))}
             </ul>
           </div>
-          <Button className="w-full">Learn More</Button>
+          <Link href={`/services/${service.name.toLowerCase().replace(/\s+/g, "-")}`}>
+            <Button className="w-full">Learn More</Button>
+          </Link>
         </div>
       </CardContent>
     </Card>
