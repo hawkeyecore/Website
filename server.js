@@ -1,47 +1,39 @@
-const express = require("express")
-const next = require("next")
+// Absolute minimal HTTP server that responds to all requests
+const http = require("http")
 
-const dev = process.env.NODE_ENV !== "production"
-const app = next({ dev })
-const handle = app.getRequestHandler()
 const port = process.env.PORT || 3000
 
-// Create Express server
-const server = express()
+// Create a basic HTTP server
+const server = http.createServer((req, res) => {
+  // Log all incoming requests
+  console.log(`Received request: ${req.method} ${req.url}`)
 
-// Respond to health checks immediately
-server.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok" })
+  // Respond with 200 OK to all requests
+  res.writeHead(200, { "Content-Type": "text/plain" })
+  res.end("OK - Server is running")
 })
 
-// Respond to root path for Railway's health check
-server.get("/", (req, res) => {
-  res.status(200).send("OK")
+// Start server on all interfaces
+server.listen(port, "0.0.0.0", () => {
+  console.log(`Server running at http://0.0.0.0:${port}/`)
 })
 
-// Start server immediately before Next.js is ready
-server.listen(port, "0.0.0.0", (err) => {
-  if (err) throw err
-  console.log(`> Server listening on port ${port}`)
+// Handle server errors
+server.on("error", (err) => {
+  console.error("Server error:", err)
 })
 
-// Initialize Next.js
-app
-  .prepare()
-  .then(() => {
-    console.log("> Next.js ready")
+// Log when the process exits
+process.on("exit", (code) => {
+  console.log(`Process exiting with code: ${code}`)
+})
 
-    // Handle all other requests with Next.js
-    server.all("*", (req, res) => {
-      return handle(req, res)
-    })
-  })
-  .catch((err) => {
-    console.error("Error preparing Next.js app:", err)
-  })
+// Handle uncaught exceptions
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught exception:", err)
+})
 
-// Error handling middleware
-server.use((err, req, res, next) => {
-  console.error("Unexpected error:", err)
-  res.status(500).send("Internal Server Error")
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason)
 })

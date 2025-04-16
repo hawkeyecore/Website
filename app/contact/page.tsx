@@ -125,6 +125,19 @@ export default function ContactPage() {
           </div>
         </div>
 
+        <div className="mt-8 w-full h-[400px] rounded-lg overflow-hidden shadow-md">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3462.525526603483!2d-95.5681177239516!3d29.791358330516733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640dbacf5ff8837%3A0x1c4b21fd66fb2263!2sHawkeye%20Core!5e0!3m2!1sen!2sus!4v1740730891466!5m2!1sen!2sus"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            aria-label="Map showing Hawkeye Core office location"
+          ></iframe>
+        </div>
+
         <div className="mx-auto max-w-[700px] text-center">
           <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Ready to get started?</h2>
           <p className="mt-2 text-gray-500 dark:text-gray-400">
