@@ -16,24 +16,6 @@ import {
   Lock,
   BarChart3,
 } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Our Products | Scheduling Dispatch",
-  description:
-    "Discover our innovative technology products designed to enhance your business operations. Scheduling Dispatch is a smart job scheduling app that helps businesses assign tasks, track progress, and manage teams effortlessly.",
-  keywords: [
-    "scheduling software",
-    "job management",
-    "team management",
-    "task scheduling",
-    "business software",
-    "productivity tools",
-  ],
-  alternates: {
-    canonical: "https://hawkeye-core.com/products",
-  },
-}
 
 export default function ProductsPage() {
   return (

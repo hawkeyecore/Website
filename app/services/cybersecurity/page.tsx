@@ -1,244 +1,280 @@
 import Image from "next/image"
 import Link from "next/link"
-import { CaseStudyDialog, type CaseStudyProps } from "@/components/case-study-dialog"
+import { Button } from "@/components/ui/button"
+import { CheckCircle, ArrowLeft } from "lucide-react"
+import { CaseStudyCard } from "@/components/case-study-dialog"
 
 export default function CybersecurityPage() {
-  // Define case studies
-  const financialCaseStudy: CaseStudyProps = {
-    title: "Financial Institution Security Overhaul",
-    client: "National Credit Union",
-    industry: "Financial Services",
-    challenge:
-      "A large credit union faced increasing cyber threats and needed to strengthen their security posture while maintaining compliance with strict financial regulations.",
-    solution:
-      "We implemented a comprehensive security program including advanced threat detection, endpoint protection, and a zero-trust network architecture. We also conducted regular security awareness training for all employees.",
-    results: [
-      "95% reduction in security incidents",
-      "Successfully passed regulatory audits with zero findings",
-      "Prevented a targeted ransomware attack that affected other financial institutions",
-    ],
-    testimonial: {
-      quote:
-        "The security transformation has given us peace of mind and protected our members' sensitive data. The investment has paid for itself many times over.",
-      author: "Chief Information Security Officer",
-      position: "National Credit Union",
+  const caseStudies = [
+    {
+      id: 1,
+      title: "Financial Institution Security Overhaul",
+      client: "Regional Banking Group",
+      industry: "Financial Services",
+      challenge:
+        "A regional banking group with over 50 branches was experiencing increasing security threats, including several attempted breaches. Their legacy security infrastructure was outdated and unable to detect sophisticated modern attacks. They needed a comprehensive security overhaul to protect sensitive customer financial data and comply with stringent industry regulations.",
+      solution:
+        "We implemented a multi-layered security approach including:\n\n- Comprehensive security assessment and vulnerability testing\n- Advanced threat detection and prevention systems\n- 24/7 Security Operations Center (SOC) monitoring\n- Employee security awareness training program\n- Implementation of Zero Trust Architecture\n- Data encryption and secure access management\n- Regular penetration testing and security audits",
+      results: [
+        "98% reduction in security incidents within the first six months",
+        "Successful compliance with all banking security regulations",
+        "100% of staff completed security awareness training",
+        "Zero data breaches since implementation",
+        "Reduced incident response time from hours to minutes",
+        "Achieved highest security rating in their annual audit",
+      ],
+      testimonial: {
+        quote:
+          "The security transformation has been remarkable. We now have confidence in our ability to protect our customers' data and respond effectively to emerging threats. The team's expertise in financial security compliance was invaluable.",
+        author: "Sarah Johnson",
+        position: "Chief Information Security Officer",
+      },
+      image: "/images/financial-security-dashboard.jpeg",
+      shortDescription:
+        "Comprehensive security overhaul for a regional banking group with 50+ branches, resulting in 98% reduction in security incidents and full regulatory compliance.",
     },
-    imageUrl: "/images/financial-security-system.jpeg",
-  }
-
-  const healthcareCaseStudy: CaseStudyProps = {
-    title: "Healthcare Provider Data Protection",
-    client: "Regional Hospital Network",
-    industry: "Healthcare",
-    challenge:
-      "A hospital network needed to secure patient data across multiple facilities while ensuring compliance with HIPAA regulations and maintaining operational efficiency.",
-    solution:
-      "We deployed a comprehensive security solution including network segmentation, data loss prevention, and advanced threat protection. We also implemented secure access controls for medical devices and electronic health records.",
-    results: [
-      "100% compliance with HIPAA security requirements",
-      "80% reduction in unauthorized access attempts",
-      "Streamlined security processes reduced authentication time by 40%",
-    ],
-    testimonial: {
-      quote:
-        "Their team understood the unique challenges of healthcare cybersecurity. They protected our patient data while actually improving our clinical workflows.",
-      author: "IT Director",
-      position: "Regional Hospital Network",
+    {
+      id: 2,
+      title: "Healthcare Provider Data Protection",
+      client: "Metropolitan Medical Center",
+      industry: "Healthcare",
+      challenge:
+        "A large metropolitan medical center was struggling with protecting patient data across their network of hospitals and clinics. They had experienced a ransomware attack that disrupted operations and raised concerns about HIPAA compliance. They needed a robust security solution that would protect sensitive patient information while maintaining operational efficiency.",
+      solution:
+        "We developed and implemented a comprehensive healthcare-focused security solution:\n\n- Medical device security assessment and remediation\n- HIPAA-compliant data protection framework\n- Advanced endpoint protection for all clinical workstations\n- Network segmentation to isolate critical systems\n- Secure telehealth infrastructure\n- Ransomware protection and recovery systems\n- Continuous security monitoring tailored for healthcare environments",
+      results: [
+        "Successfully blocked over 1,500 attempted attacks in the first year",
+        "Achieved 100% HIPAA compliance across all systems",
+        "Reduced security-related downtime by 95%",
+        "Implemented secure telehealth services for 200+ providers",
+        "Decreased insurance premiums due to improved security posture",
+        "Zero patient data compromised since implementation",
+      ],
+      testimonial: {
+        quote:
+          "After the ransomware incident, we knew we needed experts who understand both cybersecurity and healthcare operations. The solution not only secured our systems but actually improved clinical workflow efficiency. Our staff and patients now have peace of mind knowing their data is protected.",
+        author: "Dr. Michael Chen",
+        position: "Chief Medical Information Officer",
+      },
+      image: "/images/healthcare-security-system.jpeg",
+      shortDescription:
+        "Implemented HIPAA-compliant security framework for a metropolitan medical center after a ransomware attack, resulting in zero data breaches and 95% reduction in security-related downtime.",
     },
-    imageUrl: "/images/healthcare-security.jpeg",
-  }
-
-  const manufacturingCaseStudy: CaseStudyProps = {
-    title: "Manufacturing Security Transformation",
-    client: "Global Manufacturing Corp",
-    industry: "Manufacturing",
-    challenge:
-      "A global manufacturer needed to secure their operational technology (OT) and IT environments while protecting intellectual property and preventing production disruptions.",
-    solution:
-      "We implemented an integrated IT/OT security framework with industrial-specific controls, network monitoring, and secure remote access solutions. We also developed custom security protocols for their proprietary manufacturing systems.",
-    results: [
-      "Zero security-related production downtime in 18 months",
-      "Protected valuable IP from targeted espionage attempts",
-      "Achieved compliance with new industry security standards",
-    ],
-    testimonial: {
-      quote:
-        "They understood both cybersecurity and manufacturing operations—a rare combination that delivered exceptional value to our business.",
-      author: "VP of Operations",
-      position: "Global Manufacturing Corp",
-    },
-    imageUrl: "/images/manufacturing-security.jpeg",
-  }
+  ]
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Hero Section */}
-      <section className="mb-16 text-center">
-        <h1 className="mb-6 text-4xl font-bold md:text-5xl">Cybersecurity Services</h1>
-        <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-600">
-          Protect your business with our comprehensive cybersecurity solutions. We provide advanced threat detection,
-          vulnerability management, and security consulting to keep your data and systems safe from evolving cyber
-          threats.
-        </p>
-        <div className="relative mx-auto h-[300px] w-full max-w-4xl overflow-hidden rounded-xl md:h-[400px]">
-          <Image src="/digital-shield.png" alt="Cybersecurity Protection" fill className="object-cover" priority />
-        </div>
-      </section>
-
-      {/* Services Offered Section */}
-      <section className="mb-16">
-        <h2 className="mb-8 text-center text-3xl font-bold">Our Cybersecurity Services</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
-            <h3 className="mb-4 text-xl font-bold">Security Assessments</h3>
-            <p className="text-gray-600">
-              Comprehensive evaluation of your security posture to identify vulnerabilities and recommend improvements.
-            </p>
-          </div>
-          <div className="rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
-            <h3 className="mb-4 text-xl font-bold">Threat Detection & Response</h3>
-            <p className="text-gray-600">
-              24/7 monitoring and rapid response to security incidents to minimize damage and recovery time.
-            </p>
-          </div>
-          <div className="rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
-            <h3 className="mb-4 text-xl font-bold">Penetration Testing</h3>
-            <p className="text-gray-600">
-              Simulated cyber attacks to identify and fix security weaknesses before malicious actors can exploit them.
-            </p>
-          </div>
-          <div className="rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
-            <h3 className="mb-4 text-xl font-bold">Security Compliance</h3>
-            <p className="text-gray-600">
-              Ensure your organization meets industry regulations and standards like GDPR, HIPAA, PCI DSS, and more.
-            </p>
-          </div>
-          <div className="rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
-            <h3 className="mb-4 text-xl font-bold">Employee Security Training</h3>
-            <p className="text-gray-600">
-              Educate your team on security best practices and how to recognize and respond to potential threats.
-            </p>
-          </div>
-          <div className="rounded-lg border p-6 shadow-sm transition-shadow hover:shadow-md">
-            <h3 className="mb-4 text-xl font-bold">Incident Response Planning</h3>
-            <p className="text-gray-600">
-              Develop comprehensive plans to quickly and effectively respond to security breaches and minimize impact.
-            </p>
+    <>
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col space-y-4">
+            <Link
+              href="/services"
+              className="flex items-center text-sm font-medium text-muted-foreground hover:text-foreground"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Services
+            </Link>
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+              <div className="space-y-4">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Cybersecurity</h1>
+                <p className="text-muted-foreground md:text-xl">
+                  Comprehensive protection for your digital assets and sensitive data
+                </p>
+                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                  <Link href="/contact">
+                    <Button size="lg">Request a Consultation</Button>
+                  </Link>
+                  <Button size="lg" variant="outline">
+                    Download Brochure
+                  </Button>
+                </div>
+              </div>
+              <div className="relative h-[300px] md:h-[400px] overflow-hidden rounded-lg">
+                <Image src="/digital-shield.png" alt="Cybersecurity Protection" fill className="object-cover" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="mb-16 bg-gray-50 py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center text-3xl font-bold">Why Choose Our Cybersecurity Services</h2>
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6">
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <h2 className="text-2xl font-bold mb-6">Our Cybersecurity Services</h2>
+              <p className="mb-6">
+                In today's digital landscape, cybersecurity isn't optional—it's essential. Our comprehensive security
+                solutions protect your business from sophisticated threats while ensuring compliance with industry
+                regulations.
+              </p>
+              <p className="mb-6">
+                Our team of certified security experts uses advanced tools and methodologies to identify
+                vulnerabilities, implement robust protections, and respond rapidly to emerging threats. We provide
+                end-to-end security that adapts to your business needs and the evolving threat landscape.
+              </p>
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h3 className="text-xl font-medium">Security Assessments</h3>
+                  <p className="text-muted-foreground">
+                    Comprehensive evaluation of your security posture to identify vulnerabilities and compliance gaps.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-medium">Managed Security Services</h3>
+                  <p className="text-muted-foreground">
+                    24/7 monitoring and management of your security infrastructure to detect and respond to threats.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-medium">Data Protection</h3>
+                  <p className="text-muted-foreground">
+                    Comprehensive solutions to protect sensitive data throughout its lifecycle.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-medium">Incident Response</h3>
+                  <p className="text-muted-foreground">
+                    Rapid response to security incidents to minimize damage and restore operations.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold mb-6">Benefits</h2>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-[#00a3e0] mt-0.5" />
+                  <div>
+                    <span className="text-lg font-medium">Proactive threat protection</span>
+                    <p className="text-muted-foreground">
+                      Identify and mitigate security threats before they impact your business.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-[#00a3e0] mt-0.5" />
+                  <div>
+                    <span className="text-lg font-medium">Regulatory compliance</span>
+                    <p className="text-muted-foreground">
+                      Meet industry-specific security requirements and avoid costly penalties.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-[#00a3e0] mt-0.5" />
+                  <div>
+                    <span className="text-lg font-medium">Business continuity</span>
+                    <p className="text-muted-foreground">
+                      Minimize downtime and ensure rapid recovery in the event of a security incident.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-[#00a3e0] mt-0.5" />
+                  <div>
+                    <span className="text-lg font-medium">Customer trust</span>
+                    <p className="text-muted-foreground">
+                      Build and maintain customer confidence by protecting their sensitive information.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Our Security Process</h2>
+          <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-5">
+            <div className="flex flex-col items-center text-center space-y-3">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0a1229] text-white text-xl font-bold">
+                1
+              </div>
+              <h3 className="text-xl font-bold">Assessment</h3>
+              <p className="text-muted-foreground">
+                We evaluate your current security posture and identify vulnerabilities and risks.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center space-y-3">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0a1229] text-white text-xl font-bold">
+                2
+              </div>
+              <h3 className="text-xl font-bold">Strategy</h3>
+              <p className="text-muted-foreground">
+                We develop a comprehensive security strategy tailored to your business needs.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center space-y-3">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0a1229] text-white text-xl font-bold">
+                3
+              </div>
+              <h3 className="text-xl font-bold">Implementation</h3>
+              <p className="text-muted-foreground">
+                We deploy security solutions and controls to protect your systems and data.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center space-y-3">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0a1229] text-white text-xl font-bold">
+                4
+              </div>
+              <h3 className="text-xl font-bold">Monitoring</h3>
+              <p className="text-muted-foreground">
+                We continuously monitor your environment for security threats and anomalies.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center space-y-3">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0a1229] text-white text-xl font-bold">
+                5
+              </div>
+              <h3 className="text-xl font-bold">Response</h3>
+              <p className="text-muted-foreground">
+                We respond rapidly to security incidents and continuously improve your security posture.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Case Studies</h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="flex flex-col items-start">
-              <h3 className="mb-2 text-xl font-bold">Proactive Protection</h3>
-              <p className="text-gray-600">
-                We don't just react to threats—we anticipate them. Our proactive approach to cybersecurity helps prevent
-                incidents before they occur.
-              </p>
-            </div>
-            <div className="flex flex-col items-start">
-              <h3 className="mb-2 text-xl font-bold">Expert Security Team</h3>
-              <p className="text-gray-600">
-                Our cybersecurity professionals hold industry-leading certifications and stay current with the latest
-                threats and defense strategies.
-              </p>
-            </div>
-            <div className="flex flex-col items-start">
-              <h3 className="mb-2 text-xl font-bold">Customized Security Solutions</h3>
-              <p className="text-gray-600">
-                We tailor our security services to your specific business needs, industry requirements, and risk
-                profile.
-              </p>
-            </div>
-            <div className="flex flex-col items-start">
-              <h3 className="mb-2 text-xl font-bold">Continuous Monitoring</h3>
-              <p className="text-gray-600">
-                Our 24/7 security operations center provides round-the-clock monitoring and immediate response to
-                potential threats.
-              </p>
-            </div>
+            {caseStudies.map((study) => (
+              <CaseStudyCard key={study.id} caseStudy={study} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Case Studies Section */}
-      <section className="mb-16">
-        <h2 className="mb-8 text-center text-3xl font-bold">Case Studies</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-lg border p-6 shadow-sm">
-            <h3 className="mb-2 text-xl font-bold">{financialCaseStudy.title}</h3>
-            <p className="mb-4 text-sm text-gray-500">
-              {financialCaseStudy.client} | {financialCaseStudy.industry}
-            </p>
-            <div className="relative mb-4 h-48 w-full overflow-hidden rounded-md">
-              <Image
-                src={financialCaseStudy.imageUrl || "/placeholder.svg?height=200&width=400&query=cybersecurity"}
-                alt={financialCaseStudy.title}
-                fill
-                className="object-cover"
-              />
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-[#0a1229] text-primary-foreground">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Ready to secure your business?</h2>
+              <p className="max-w-[900px] md:text-xl/relaxed">
+                Contact us today to discuss how our cybersecurity solutions can protect your business from evolving
+                threats.
+              </p>
             </div>
-            <p className="mb-4 line-clamp-3">{financialCaseStudy.challenge}</p>
-            <CaseStudyDialog caseStudy={financialCaseStudy} />
-          </div>
-
-          <div className="rounded-lg border p-6 shadow-sm">
-            <h3 className="mb-2 text-xl font-bold">{healthcareCaseStudy.title}</h3>
-            <p className="mb-4 text-sm text-gray-500">
-              {healthcareCaseStudy.client} | {healthcareCaseStudy.industry}
-            </p>
-            <div className="relative mb-4 h-48 w-full overflow-hidden rounded-md">
-              <Image
-                src={healthcareCaseStudy.imageUrl || "/placeholder.svg?height=200&width=400&query=healthcare security"}
-                alt={healthcareCaseStudy.title}
-                fill
-                className="object-cover"
-              />
+            <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <Link href="/contact">
+                <Button size="lg" variant="secondary">
+                  Schedule a Consultation
+                </Button>
+              </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
+              >
+                Contact Sales
+              </Button>
             </div>
-            <p className="mb-4 line-clamp-3">{healthcareCaseStudy.challenge}</p>
-            <CaseStudyDialog caseStudy={healthcareCaseStudy} />
-          </div>
-
-          <div className="rounded-lg border p-6 shadow-sm">
-            <h3 className="mb-2 text-xl font-bold">{manufacturingCaseStudy.title}</h3>
-            <p className="mb-4 text-sm text-gray-500">
-              {manufacturingCaseStudy.client} | {manufacturingCaseStudy.industry}
-            </p>
-            <div className="relative mb-4 h-48 w-full overflow-hidden rounded-md">
-              <Image
-                src={
-                  manufacturingCaseStudy.imageUrl ||
-                  "/placeholder.svg?height=200&width=400&query=manufacturing security"
-                }
-                alt={manufacturingCaseStudy.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <p className="mb-4 line-clamp-3">{manufacturingCaseStudy.challenge}</p>
-            <CaseStudyDialog caseStudy={manufacturingCaseStudy} />
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="rounded-xl bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-12 text-center text-white">
-        <h2 className="mb-6 text-3xl font-bold">Ready to Secure Your Business?</h2>
-        <p className="mx-auto mb-8 max-w-2xl text-lg">
-          Contact us today to schedule a security assessment and discover how our cybersecurity services can protect
-          your organization.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-block rounded-md bg-white px-6 py-3 text-lg font-medium text-blue-600 transition-colors hover:bg-gray-100"
-        >
-          Get in Touch
-        </Link>
-      </section>
-    </div>
+    </>
   )
 }

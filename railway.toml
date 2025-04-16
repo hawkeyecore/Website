@@ -1,11 +1,8 @@
 [build]
 builder = "nixpacks"
-buildCommand = "npm install --omit=dev --no-fund --no-audit --loglevel=error && npm run build"
+buildCommand = "pnpm install --no-frozen-lockfile && pnpm build"
 
 [deploy]
-startCommand = "node server.js"
-healthcheckPath = "/health"
+startCommand = "pnpm start"
+healthcheckPath = "/"
 healthcheckTimeout = 100
-
-[nixpacks]
-node-version = "18"

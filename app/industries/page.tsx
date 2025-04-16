@@ -7,24 +7,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import { Activity, Droplet, Building, Landmark, Home, Truck, ShoppingBag, CheckCircle } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
-
-// Since this is a client component, we need to add metadata in a separate file
-// We'll create a separate metadata.tsx file for this page
 
 export default function IndustriesPage() {
-  const [imageError, setImageError] = useState<Record<string, boolean>>({})
-
-  // Function to get a fallback image if both primary and fallback images fail
-  const getImageSrc = (industry: any, index: number) => {
-    if (imageError[industry.id]) {
-      return (
-        industry.fallbackImage || `/placeholder.svg?height=400&width=600&query=${encodeURIComponent(industry.name)}`
-      )
-    }
-    return industry.image || `/placeholder.svg?height=400&width=600&query=${encodeURIComponent(industry.name)}`
-  }
-
   const industries = [
     {
       id: "healthcare",
@@ -32,7 +16,6 @@ export default function IndustriesPage() {
       icon: <Activity className="h-8 w-8 text-[#0055b3]" />,
       description: "Innovative technology solutions for modern healthcare providers.",
       image: "/images/business-meeting.jpeg",
-      fallbackImage: "/interconnected-healthcare.png",
       systems: [
         {
           name: "Electronic Health Records (EHR)",
@@ -63,7 +46,6 @@ export default function IndustriesPage() {
       icon: <Droplet className="h-8 w-8 text-[#0055b3]" />,
       description: "Specialized systems for the complex oil and gas industry.",
       image: "/images/corporate-training.jpeg",
-      fallbackImage: "/oil-gas-landscape.png",
       systems: [
         {
           name: "ERP for Oil & Gas",
@@ -94,7 +76,6 @@ export default function IndustriesPage() {
       icon: <Landmark className="h-8 w-8 text-[#0055b3]" />,
       description: "Secure and efficient solutions for financial institutions.",
       image: "/images/business-presentation.jpeg",
-      fallbackImage: "/interconnected-finance-tech.png",
       systems: [
         {
           name: "Core Banking Systems",
@@ -125,7 +106,6 @@ export default function IndustriesPage() {
       icon: <Building className="h-8 w-8 text-[#0055b3]" />,
       description: "Digital transformation solutions for government agencies.",
       image: "/images/diverse-team-planning.jpeg",
-      fallbackImage: "/digital-government-network.png",
       systems: [
         {
           name: "Public Service Portals",
@@ -156,7 +136,6 @@ export default function IndustriesPage() {
       icon: <Home className="h-8 w-8 text-[#0055b3]" />,
       description: "Comprehensive solutions for property management and real estate businesses.",
       image: "/images/modern-workspace.jpeg",
-      fallbackImage: "/property-management-overview.png",
       systems: [
         {
           name: "CRM for Real Estate",
@@ -191,7 +170,6 @@ export default function IndustriesPage() {
       icon: <Truck className="h-8 w-8 text-[#0055b3]" />,
       description: "Optimized solutions for logistics and transportation companies.",
       image: "/images/team-collaboration.jpeg",
-      fallbackImage: "/global-logistics-network.png",
       systems: [
         {
           name: "Supply Chain Automation",
@@ -215,7 +193,6 @@ export default function IndustriesPage() {
       icon: <ShoppingBag className="h-8 w-8 text-[#0055b3]" />,
       description: "Innovative solutions for modern retail and e-commerce businesses.",
       image: "/images/data-analytics-team.jpeg",
-      fallbackImage: "/diverse-shoppers-online.png",
       systems: [
         {
           name: "Custom E-commerce Platforms",
@@ -242,10 +219,6 @@ export default function IndustriesPage() {
     },
   ]
 
-  const handleImageError = (id: string) => {
-    setImageError((prev) => ({ ...prev, [id]: true }))
-  }
-
   return (
     <>
       <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
@@ -264,8 +237,8 @@ export default function IndustriesPage() {
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <Tabs defaultValue="overview" className="w-full">
-            <div className="flex justify-center mb-8 overflow-x-auto pb-2">
-              <TabsList className="flex-wrap justify-center">
+            <div className="flex justify-center mb-8 overflow-x-auto">
+              <TabsList>
                 <TabsTrigger value="overview">Overview</TabsTrigger>
                 {industries.map((industry) => (
                   <TabsTrigger key={industry.id} value={industry.id}>
@@ -277,16 +250,14 @@ export default function IndustriesPage() {
 
             <TabsContent value="overview" className="mt-0">
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {industries.map((industry, index) => (
+                {industries.map((industry) => (
                   <Card key={industry.id} className="overflow-hidden">
-                    <div className="aspect-video relative bg-muted">
+                    <div className="aspect-video relative">
                       <Image
-                        src={getImageSrc(industry, index) || "/placeholder.svg"}
-                        alt={`${industry.name} industry`}
+                        src={industry.image || "/placeholder.svg"}
+                        alt={industry.name}
                         fill
                         className="object-cover"
-                        priority={industry.id === "healthcare"}
-                        onError={() => handleImageError(industry.id)}
                       />
                     </div>
                     <CardContent className="p-6">
@@ -297,8 +268,8 @@ export default function IndustriesPage() {
                         <h3 className="text-xl font-bold">{industry.name}</h3>
                       </div>
                       <p className="text-muted-foreground mb-4">{industry.description}</p>
-                      <Link href={`/industries/${industry.id}`} className="w-full block">
-                        <Button variant="outline" className="w-full" aria-label={`Explore ${industry.name} Solutions`}>
+                      <Link href={`/industries/${industry.id}`}>
+                        <Button variant="outline" className="w-full">
                           Explore Solutions
                         </Button>
                       </Link>
@@ -308,18 +279,16 @@ export default function IndustriesPage() {
               </div>
             </TabsContent>
 
-            {industries.map((industry, index) => (
+            {industries.map((industry) => (
               <TabsContent key={industry.id} value={industry.id} className="mt-0">
                 <div className="grid gap-8 md:grid-cols-2">
                   <div>
-                    <div className="relative h-[300px] md:h-[400px] lg:h-[500px] w-full rounded-lg overflow-hidden mb-6 bg-muted">
+                    <div className="relative h-[300px] md:h-[400px] lg:h-[500px] w-full rounded-lg overflow-hidden mb-6">
                       <Image
-                        src={getImageSrc(industry, index) || "/placeholder.svg"}
-                        alt={`${industry.name} industry`}
+                        src={industry.image || "/placeholder.svg"}
+                        alt={industry.name}
                         fill
                         className="object-cover"
-                        priority
-                        onError={() => handleImageError(industry.id)}
                       />
                     </div>
                     <div className="space-y-4">
@@ -335,13 +304,9 @@ export default function IndustriesPage() {
                         specific challenges and optimize operations, helping businesses achieve greater efficiency,
                         security, and growth.
                       </p>
-                      <div className="flex flex-wrap gap-4">
-                        <Link href={`/industries/${industry.id}`} className="block">
-                          <Button>Request Demo</Button>
-                        </Link>
-                        <Link href={`/industries/${industry.id}`} className="block">
-                          <Button variant="outline">Learn More</Button>
-                        </Link>
+                      <div className="flex gap-4">
+                        <Button>Request Demo</Button>
+                        <Button variant="outline">Learn More</Button>
                       </div>
                     </div>
                   </div>
@@ -355,7 +320,7 @@ export default function IndustriesPage() {
                             <ul className="space-y-2">
                               {system.features.map((feature, featureIndex) => (
                                 <li key={featureIndex} className="flex items-start gap-2">
-                                  <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5 shrink-0" />
+                                  <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5" />
                                   <span>{feature}</span>
                                 </li>
                               ))}
@@ -368,19 +333,19 @@ export default function IndustriesPage() {
                       <h4 className="text-lg font-bold mb-2">Why Choose Our {industry.name} Solutions?</h4>
                       <ul className="space-y-2">
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5 shrink-0" />
+                          <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5" />
                           <span>Industry-specific expertise and tailored solutions</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5 shrink-0" />
+                          <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5" />
                           <span>Seamless integration with existing systems</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5 shrink-0" />
+                          <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5" />
                           <span>Ongoing support and maintenance</span>
                         </li>
                         <li className="flex items-start gap-2">
-                          <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5 shrink-0" />
+                          <CheckCircle className="h-5 w-5 text-[#0055b3] mt-0.5" />
                           <span>Scalable solutions that grow with your business</span>
                         </li>
                       </ul>
@@ -403,36 +368,27 @@ export default function IndustriesPage() {
               <p className="md:text-xl">
                 Our team of experts can develop tailored solutions to address your specific industry challenges.
               </p>
-              <div className="flex flex-wrap gap-2 min-[400px]:flex-row">
-                <Link href="/contact" className="block">
-                  <Button size="lg" variant="secondary">
-                    Contact Our Experts
-                  </Button>
-                </Link>
-                <Link href="/case-studies" className="block">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
-                  >
-                    View Case Studies
-                  </Button>
-                </Link>
+              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Button size="lg" variant="secondary">
+                  Contact Our Experts
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
+                >
+                  View Case Studies
+                </Button>
               </div>
             </div>
             <div className="flex items-center justify-center">
-              <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden bg-muted">
-                <Image
-                  src="/images/team-celebration.jpeg"
-                  alt="Team Collaboration"
-                  fill
-                  className="object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.src = "/collaborative-tech-brainstorm.png"
-                  }}
-                />
-              </div>
+              <Image
+                src="/images/team-celebration.jpeg"
+                alt="Team Collaboration"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover"
+              />
             </div>
           </div>
         </div>
