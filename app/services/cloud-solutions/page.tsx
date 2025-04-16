@@ -2,57 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, ArrowLeft } from "lucide-react"
-import { CaseStudyDialog, type CaseStudyProps } from "@/components/case-study-dialog"
-
-// Define case studies data
-const caseStudies: CaseStudyProps[] = [
-  {
-    title: "Financial Services Firm",
-    client: "Capital Trust Partners",
-    industry: "Financial Services",
-    challenge:
-      "Capital Trust Partners was facing increasing infrastructure costs and reliability issues with their on-premises systems. They needed a secure, compliant cloud solution that could handle sensitive financial data while improving performance and reducing operational expenses.",
-    solution:
-      "We designed and implemented a hybrid cloud architecture that maintained strict security and compliance requirements while migrating non-sensitive workloads to the public cloud. The solution included automated disaster recovery, comprehensive monitoring, and a phased migration approach to minimize disruption.",
-    results: [
-      "40% reduction in infrastructure costs",
-      "99.99% uptime, exceeding SLA requirements",
-      "Enhanced disaster recovery capabilities with 15-minute RTO",
-      "Improved scalability during high-volume trading periods",
-      "Strengthened security posture with advanced threat protection",
-    ],
-    testimonial: {
-      quote:
-        "The cloud migration has been transformative for our business. We've significantly reduced costs while improving our system reliability and security. The team's expertise in financial services compliance was invaluable.",
-      author: "Jennifer Martinez",
-      position: "CTO, Capital Trust Partners",
-    },
-    imageUrl: "/images/financial-cloud-dashboard.jpeg",
-  },
-  {
-    title: "Manufacturing Company",
-    client: "Precision Industries",
-    industry: "Manufacturing",
-    challenge:
-      "Precision Industries was struggling with outdated IT infrastructure that couldn't support their growing operations across multiple facilities. They needed a flexible cloud solution that could integrate with industrial systems while maintaining strict security and compliance requirements.",
-    solution:
-      "We implemented a hybrid cloud architecture that connected their manufacturing facilities while centralizing data management. The solution included edge computing for real-time processing, secure IoT integration, and comprehensive monitoring across all environments.",
-    results: [
-      "Reduced deployment time by 70% for new applications",
-      "Improved resource utilization by 45%",
-      "Seamless scaling during peak production periods",
-      "30% reduction in overall IT maintenance costs",
-      "Enhanced data analytics capabilities across production lines",
-    ],
-    testimonial: {
-      quote:
-        "The hybrid cloud solution has given us unprecedented visibility across our manufacturing operations while significantly reducing our IT overhead. We can now deploy new capabilities in days rather than months.",
-      author: "Robert Chen",
-      position: "VP of Operations, Precision Industries",
-    },
-    imageUrl: "/images/manufacturing-cloud-system.jpeg",
-  },
-]
 
 export default function CloudSolutionsPage() {
   return (
@@ -233,24 +182,54 @@ export default function CloudSolutionsPage() {
         <div className="container px-4 md:px-6">
           <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Case Studies</h2>
           <div className="grid gap-8 md:grid-cols-2">
-            {caseStudies.map((caseStudy, index) => (
-              <div key={index} className="border rounded-lg p-6 space-y-4">
-                <h3 className="text-2xl font-bold">{caseStudy.title}</h3>
-                <p className="text-muted-foreground">{caseStudy.challenge.substring(0, 150)}...</p>
-                <div>
-                  <h4 className="font-medium mb-2">Results:</h4>
-                  <ul className="space-y-2">
-                    {caseStudy.results.slice(0, 3).map((result, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
-                        <span>{result}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <CaseStudyDialog caseStudy={caseStudy} />
+            <div className="border rounded-lg p-6 space-y-4">
+              <h3 className="text-2xl font-bold">Financial Services Firm</h3>
+              <p className="text-muted-foreground">
+                Migrated critical applications to the cloud, resulting in 40% cost savings and improved performance.
+              </p>
+              <div>
+                <h4 className="font-medium mb-2">Results:</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
+                    <span>40% reduction in infrastructure costs</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
+                    <span>99.99% uptime</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
+                    <span>Enhanced disaster recovery capabilities</span>
+                  </li>
+                </ul>
               </div>
-            ))}
+              <Button variant="outline">Read Full Case Study</Button>
+            </div>
+            <div className="border rounded-lg p-6 space-y-4">
+              <h3 className="text-2xl font-bold">Manufacturing Company</h3>
+              <p className="text-muted-foreground">
+                Implemented a hybrid cloud solution that improved scalability while maintaining compliance requirements.
+              </p>
+              <div>
+                <h4 className="font-medium mb-2">Results:</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
+                    <span>Reduced deployment time by 70%</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
+                    <span>Improved resource utilization by 45%</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-[#00a3e0] mt-0.5" />
+                    <span>Seamless scaling during peak periods</span>
+                  </li>
+                </ul>
+              </div>
+              <Button variant="outline">Read Full Case Study</Button>
+            </div>
           </div>
         </div>
       </section>
