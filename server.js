@@ -4,42 +4,29 @@ const { parse } = require("url")
 const next = require("next")
 
 const dev = process.env.NODE_ENV !== "production"
-const hostname = "0.0.0.0"
-const port = process.env.PORT || 3000
-
-// Initialize Next.js
-const app = next({ dev, hostname, port })
+const app = next({ dev })
 const handle = app.getRequestHandler()
+const port = process.env.PORT || 3000
 
 app
   .prepare()
   .then(() => {
     const server = express()
 
-    // Health check endpoint for Railway
+    // Health check endpoint
     server.get("/health", (req, res) => {
       res.status(200).send("OK")
     })
 
-    // Root health check for Railway
-    server.get("/", (req, res, next) => {
-      const parsedUrl = parse(req.url, true)
-      if (parsedUrl.pathname === "/") {
-        res.setHeader("x-health-check", "true")
-      }
-      next()
-    })
-
-    // Let Next.js handle all other routes
+    // Handle all other routes with Next.js
     server.all("*", (req, res) => {
       const parsedUrl = parse(req.url, true)
       return handle(req, res, parsedUrl)
     })
 
-    // Start the server
-    server.listen(port, hostname, (err) => {
+    server.listen(port, "0.0.0.0", (err) => {
       if (err) throw err
-      console.log(`> Ready on http://${hostname}:${port}`)
+      console.log(`> Ready on http://0.0.0.0:${port}`)
     })
   })
   .catch((err) => {

@@ -61,12 +61,10 @@
     "pg-native": "latest",
     "bcryptjs": "latest",
     "jose": "latest",
+    "pg": "latest",
     "express": "latest",
     "http": "latest",
-    "url": "latest",
-    "pg": "latest",
-    "fs": "latest",
-    "child_process": "latest"
+    "url": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

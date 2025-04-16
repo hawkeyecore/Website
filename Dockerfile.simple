@@ -1,21 +1,18 @@
-FROM node:20-alpine
+FROM node:18-slim
 
 WORKDIR /app
 
-# Install dependencies first, leveraging Docker cache
-COPY package.json ./
-COPY package-lock.json* ./
-
-# Install dependencies with fallback
-RUN npm ci || npm install
-
-# Copy application code
+# Copy everything at once to simplify
 COPY . .
 
-# Build application
+# Install dependencies with minimal output and increased memory
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+RUN npm install --omit=dev --no-fund --no-audit --loglevel=error
+
+# Build the application
 RUN npm run build
 
-# Expose port
+# Expose the port the app runs on
 EXPOSE 3000
 
 # Start the application
