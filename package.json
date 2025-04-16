@@ -60,10 +60,10 @@
     "zod": "^3.24.1",
     "pg-native": "latest",
     "bcryptjs": "latest",
+    "jose": "latest",
     "pg": "latest",
     "http": "latest",
-    "url": "latest",
-    "jose": "latest"
+    "url": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

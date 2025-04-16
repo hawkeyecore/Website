@@ -1,9 +1,10 @@
-// Check if we're in the preview environment or build time
+// Check if we're in the preview environment, build time, or deployment
 const isPreviewOrBuild =
   (typeof window === "undefined" && process.env.NODE_ENV !== "production") ||
   !process.env.DB_HOST ||
   process.env.VERCEL_ENV === "preview" ||
-  process.env.VERCEL_ENV === "development"
+  process.env.VERCEL_ENV === "development" ||
+  process.env.NODE_ENV === "development"
 
 // Mock data for preview environment and build time
 const mockBlogPosts = [
@@ -82,7 +83,8 @@ const mockServices = [
 
 // Mock implementations for preview environment and build time
 export async function query(sql: string, params: any[] = []) {
-  if (isPreviewOrBuild) {
+  // Always use mock data during build time or when database credentials are not available
+  if (isPreviewOrBuild || process.env.NEXT_PHASE === "phase-production-build") {
     console.log("Using mock data for query:", sql)
 
     // Return appropriate mock data based on the query
@@ -99,6 +101,10 @@ export async function query(sql: string, params: any[] = []) {
     // This code will only run in production runtime, not during build
     try {
       const { Pool } = await import("pg")
+
+      // Add more detailed logging for connection issues
+      console.log("Attempting database connection with host:", process.env.DB_HOST)
+
       const pool = new Pool({
         host: process.env.DB_HOST,
         port: Number.parseInt(process.env.DB_PORT || "5432", 10),
@@ -106,15 +112,20 @@ export async function query(sql: string, params: any[] = []) {
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+        connectionTimeoutMillis: 5000, // 5 second timeout
       })
 
       try {
         const result = await pool.query(sql, params)
+        await pool.end() // Properly close the connection
         return result.rows
       } catch (error: any) {
         console.error("Database query error:", error.message)
         // Return empty array instead of throwing error to prevent build failures
-        if (process.env.NODE_ENV === "production" && typeof window === "undefined") {
+        if (
+          (process.env.NODE_ENV === "production" && typeof window === "undefined") ||
+          process.env.NEXT_PHASE === "phase-production-build"
+        ) {
           console.warn("Database error in production build, returning empty result")
           return []
         }
@@ -123,7 +134,10 @@ export async function query(sql: string, params: any[] = []) {
     } catch (error: any) {
       console.error("Database connection error:", error.message)
       // Return empty array instead of throwing error to prevent build failures
-      if (process.env.NODE_ENV === "production" && typeof window === "undefined") {
+      if (
+        (process.env.NODE_ENV === "production" && typeof window === "undefined") ||
+        process.env.NEXT_PHASE === "phase-production-build"
+      ) {
         console.warn("Database connection error in production build, returning empty result")
         return []
       }
@@ -133,7 +147,7 @@ export async function query(sql: string, params: any[] = []) {
 }
 
 export async function create(table: string, data: Record<string, any>) {
-  if (isPreviewOrBuild) {
+  if (isPreviewOrBuild || process.env.NEXT_PHASE === "phase-production-build") {
     console.log("Mock create:", table, data)
     return 999 // Mock ID
   } else {
@@ -158,7 +172,7 @@ export async function create(table: string, data: Record<string, any>) {
 }
 
 export async function update(table: string, id: number, data: Record<string, any>) {
-  if (isPreviewOrBuild) {
+  if (isPreviewOrBuild || process.env.NEXT_PHASE === "phase-production-build") {
     console.log("Mock update:", table, id, data)
     return
   } else {
@@ -181,7 +195,7 @@ export async function update(table: string, id: number, data: Record<string, any
 }
 
 export async function remove(table: string, id: number) {
-  if (isPreviewOrBuild) {
+  if (isPreviewOrBuild || process.env.NEXT_PHASE === "phase-production-build") {
     console.log("Mock remove:", table, id)
     return
   } else {
@@ -195,7 +209,7 @@ export async function remove(table: string, id: number) {
 }
 
 export async function getById(table: string, id: number) {
-  if (isPreviewOrBuild) {
+  if (isPreviewOrBuild || process.env.NEXT_PHASE === "phase-production-build") {
     console.log("Mock getById:", table, id)
 
     if (table === "blog_posts") {
@@ -220,7 +234,7 @@ export async function getById(table: string, id: number) {
 }
 
 export async function getAll(table: string) {
-  if (isPreviewOrBuild) {
+  if (isPreviewOrBuild || process.env.NEXT_PHASE === "phase-production-build") {
     console.log("Mock getAll:", table)
 
     if (table === "blog_posts") {

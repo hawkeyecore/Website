@@ -3,7 +3,8 @@ const { parse } = require("url")
 const next = require("next")
 
 const dev = process.env.NODE_ENV !== "production"
-const hostname = "localhost"
+// Change from 'localhost' to '0.0.0.0' to bind to all network interfaces
+const hostname = process.env.NODE_ENV === "production" ? "0.0.0.0" : "localhost"
 const port = process.env.PORT || 3000
 
 // Prepare the Next.js app
@@ -23,7 +24,7 @@ app.prepare().then(() => {
       res.statusCode = 500
       res.end("Internal Server Error")
     }
-  }).listen(port, (err) => {
+  }).listen(port, hostname, (err) => {
     if (err) throw err
     console.log(`> Ready on http://${hostname}:${port}`)
   })

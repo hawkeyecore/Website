@@ -24,7 +24,14 @@ async function getBlogPosts() {
 }
 
 export default async function BlogPage() {
-  const posts = await getBlogPosts()
+  // Use try-catch to handle any potential errors during data fetching
+  let posts = []
+  try {
+    posts = await getBlogPosts()
+  } catch (error) {
+    console.error("Failed to fetch blog posts:", error)
+    // Continue with empty posts array
+  }
 
   // Default posts to show if no posts in database
   const defaultPosts = [
