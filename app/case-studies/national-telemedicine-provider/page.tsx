@@ -106,7 +106,7 @@ export default function CaseStudyPage() {
                 "The telemedicine platform has been transformative for our business and for patient care. We've been
                 able to scale rapidly while maintaining high-quality care standards. The platform's reliability and ease
                 of use have received praise from both our providers and patients."
-                <footer className="mt-2 font-medium not-italic">— Emily Chen, CEO</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

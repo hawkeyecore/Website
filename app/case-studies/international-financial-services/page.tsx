@@ -108,7 +108,7 @@ export default function CaseStudyPage() {
                 fraud losses, but we've also improved the customer experience by reducing false positives. The system's
                 ability to adapt to new fraud patterns has been particularly valuable in our rapidly evolving threat
                 landscape."
-                <footer className="mt-2 font-medium not-italic">— Maria Rodriguez, Chief Risk Officer</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

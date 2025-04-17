@@ -109,7 +109,7 @@ export default function CaseStudyPage() {
                 our IT costs, but we've also improved our system performance and enhanced our disaster recovery
                 capabilities. The team's expertise in financial services compliance was invaluable throughout the
                 project."
-                <footer className="mt-2 font-medium not-italic">— Jennifer Martinez, CIO</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

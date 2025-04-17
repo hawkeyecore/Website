@@ -108,7 +108,7 @@ export default function CaseStudyPage() {
                 "The core banking modernization has transformed our business. We've seen dramatic improvements in
                 customer satisfaction, operational efficiency, and our ability to innovate. The new system has given us
                 the foundation we need to compete effectively in today's digital banking landscape."
-                <footer className="mt-2 font-medium not-italic">— Robert Johnson, CEO</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

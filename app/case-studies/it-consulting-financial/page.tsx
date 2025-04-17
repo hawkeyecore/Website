@@ -107,7 +107,7 @@ export default function CaseStudyPage() {
                 clear processes for making technology decisions, managing risks, and ensuring compliance with
                 regulations. The framework has not only improved our regulatory standing but has also made our IT
                 investments more strategic and aligned with our business goals."
-                <footer className="mt-2 font-medium not-italic">— Sarah Johnson, CIO</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

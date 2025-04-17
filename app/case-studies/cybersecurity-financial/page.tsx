@@ -101,7 +101,7 @@ export default function CaseStudyPage() {
                 have confidence in our ability to protect our customers' sensitive financial data and meet regulatory
                 requirements. The team's expertise in financial security was evident throughout the project, and their
                 ongoing support has been invaluable."
-                <footer className="mt-2 font-medium not-italic">— Robert Wilson, CISO</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

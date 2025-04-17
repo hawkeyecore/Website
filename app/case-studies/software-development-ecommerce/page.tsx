@@ -102,7 +102,7 @@ export default function CaseStudyPage() {
                 experience has significantly increased our conversion rates, and the integrated inventory system has
                 eliminated the headaches of managing stock across multiple channels. The team's expertise and attention
                 to detail were evident throughout the project."
-                <footer className="mt-2 font-medium not-italic">— Michael Chen, Director of E-commerce</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

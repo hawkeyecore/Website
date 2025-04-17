@@ -107,7 +107,7 @@ export default function CaseStudyPage() {
                 help desk has significantly reduced technology disruptions, allowing our attorneys to focus on serving
                 clients rather than dealing with IT issues. The secure remote access has been a game-changer for our
                 productivity."
-                <footer className="mt-2 font-medium not-italic">— Robert Wilson, Managing Partner</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

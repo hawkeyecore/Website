@@ -102,7 +102,7 @@ export default function CaseStudyPage() {
                 patient data while maintaining the accessibility needed for quality care. The team's understanding of
                 healthcare-specific security challenges made all the difference in creating a solution that works for
                 our clinical environment."
-                <footer className="mt-2 font-medium not-italic">— Dr. Sarah Johnson, CMIO</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

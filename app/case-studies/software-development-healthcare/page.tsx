@@ -102,7 +102,7 @@ export default function CaseStudyPage() {
                 "The patient management system developed by the team has transformed our operations. We've seen
                 significant improvements in efficiency, patient satisfaction, and staff morale. The system is intuitive,
                 reliable, and has become an essential part of our daily operations."
-                <footer className="mt-2 font-medium not-italic">— Dr. Sarah Johnson, Chief Medical Officer</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

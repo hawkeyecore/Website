@@ -109,7 +109,7 @@ export default function CaseStudyPage() {
                 our stores, fast resolution of any IT issues, and the ability to quickly implement new retail
                 technologies. Our store managers can focus on serving customers instead of dealing with IT problems, and
                 our corporate team has complete visibility into our technology infrastructure."
-                <footer className="mt-2 font-medium not-italic">— Jennifer Martinez, VP of Operations</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

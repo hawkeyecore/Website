@@ -108,7 +108,7 @@ export default function CaseStudyPage() {
                 improvements in equipment reliability, cost reduction, and most importantly, safety performance. The
                 predictive capabilities have allowed us to prevent major failures before they occur, saving millions in
                 potential losses."
-                <footer className="mt-2 font-medium not-italic">— Ahmed Al-Farsi, VP of Operations</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

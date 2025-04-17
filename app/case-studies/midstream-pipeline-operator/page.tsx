@@ -108,7 +108,7 @@ export default function CaseStudyPage() {
                 address potential issues before they cause failures, significantly reducing our downtime and maintenance
                 costs. The system has also enhanced our safety performance and regulatory compliance, which is
                 invaluable in our industry."
-                <footer className="mt-2 font-medium not-italic">— James Wilson, Director of Operations</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>

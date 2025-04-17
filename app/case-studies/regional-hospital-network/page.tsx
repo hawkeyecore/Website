@@ -100,7 +100,7 @@ export default function CaseStudyPage() {
                 "The EHR system has transformed how we deliver care across our network. We've seen significant
                 improvements in patient outcomes, provider collaboration, and operational efficiency. The implementation
                 was smooth, and the ongoing support has been exceptional."
-                <footer className="mt-2 font-medium not-italic">— Dr. James Wilson, Chief Medical Officer</footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>
