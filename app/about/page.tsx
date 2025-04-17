@@ -6,13 +6,18 @@ import { CheckCircle } from "lucide-react"
 export default function AboutPage() {
   return (
     <>
+      <head>
+        <title>About Us - Hawkeye Core</title>
+        <meta name="description" content="Learn more about Hawkeye Core, our mission, and our team." />
+        <meta name="keywords" content="About Hawkeye Core, IT consulting, technology solutions" />
+        <link rel="canonical" href="https://www.hawkeye-core.com/about" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">About Us</h1>
-            </div>
-          </div>
+          <header className="flex flex-col items-center justify-center space-y-4 text-center">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">About Us</h1>
+          </header>
         </div>
       </section>
 
