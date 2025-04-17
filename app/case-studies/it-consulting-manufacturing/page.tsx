@@ -109,7 +109,7 @@ export default function CaseStudyPage() {
                 real-time visibility into our production processes, can predict and prevent equipment failures, and have
                 significantly improved our efficiency. The consulting team's manufacturing expertise was evident
                 throughout the project, and they ensured minimal disruption to our ongoing operations."
-                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team/footer>
+                <footer className="mt-2 font-medium not-italic">— Hawkeye Core Team</footer>
               </blockquote>
             </section>
           </div>
