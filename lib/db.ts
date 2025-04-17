@@ -200,3 +200,69 @@ export async function getAll(table: string) {
     return query(sql)
   }
 }
+
+export async function initializeDatabase() {
+  if (isPreviewEnvironment) {
+    console.log("Mock initializeDatabase: Skipping schema setup in preview environment.")
+    return
+  } else {
+    const checkTableSql = `
+      SELECT EXISTS (
+        SELECT FROM information_schema.tables 
+        WHERE table_name = 'blog_posts'
+      );
+    `
+
+    try {
+      const result = await query(checkTableSql)
+      const tableExists = result[0]?.exists
+
+      if (tableExists) {
+        console.log("Database schema already initialized. Skipping setup.")
+        return
+      }
+
+      const schemaSql = `
+        CREATE TABLE IF NOT EXISTS blog_posts (
+          id SERIAL PRIMARY KEY,
+          slug TEXT UNIQUE NOT NULL,
+          title TEXT NOT NULL,
+          excerpt TEXT,
+          content TEXT,
+          image_url TEXT,
+          author_name TEXT,
+          date DATE,
+          status TEXT
+        );
+
+        CREATE TABLE IF NOT EXISTS products (
+          id SERIAL PRIMARY KEY,
+          slug TEXT UNIQUE NOT NULL,
+          name TEXT NOT NULL,
+          description TEXT,
+          long_description TEXT,
+          price NUMERIC,
+          category TEXT,
+          image_url TEXT,
+          status TEXT
+        );
+
+        CREATE TABLE IF NOT EXISTS services (
+          id SERIAL PRIMARY KEY,
+          slug TEXT UNIQUE NOT NULL,
+          name TEXT NOT NULL,
+          description TEXT,
+          long_description TEXT,
+          image_url TEXT,
+          status TEXT
+        );
+      `
+
+      await query(schemaSql)
+      console.log("Database schema initialized successfully.")
+    } catch (error: any) {
+      console.error("Error initializing database schema:", error.message)
+      throw new Error(`Database initialization failed: ${error.message}`)
+    }
+  }
+}
