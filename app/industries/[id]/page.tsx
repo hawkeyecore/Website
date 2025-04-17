@@ -290,7 +290,7 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
                     </ul>
                   </div>
                   <Button variant="outline" className="w-full mt-6">
-                    Learn More
+                    <Link href={`/solutions`}>Learn More</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -381,7 +381,9 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
                     ))}
                   </ul>
                 </div>
-                <Button variant="outline">Read Full Case Study</Button>
+                <Button variant="outline">
+                  <Link href={`/case-studies`}>Read Full Case Study</Link>
+                </Button>
               </div>
             ))}
           </div>
