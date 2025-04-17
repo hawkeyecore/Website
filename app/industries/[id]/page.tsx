@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, ArrowLeft, Activity, Droplet, Landmark } from "lucide-react"
+import { CheckCircle, ArrowLeft, Activity, Droplet, Landmark, Building, Home, Truck, ShoppingBag } from "lucide-react"
 import { notFound } from "next/navigation"
 
 // Sample industries data - in a real app, this would come from a database or API
@@ -224,6 +224,294 @@ const industries = [
       },
     ],
   },
+  {
+    id: "government",
+    name: "Government",
+    icon: <Building className="h-8 w-8 text-[#0055b3]" />,
+    description: "Secure and efficient digital solutions for government agencies.",
+    longDescription:
+      "Our government technology solutions are designed to modernize public services, enhance security, and improve citizen engagement. From digital transformation initiatives to secure data management systems, we provide the tools government agencies need to serve their constituents effectively in the digital age.",
+    image: "/images/business-presentation-meeting.jpeg",
+    systems: [
+      {
+        name: "Citizen Engagement Platforms",
+        description:
+          "Our citizen engagement platforms enable government agencies to interact with constituents efficiently and transparently.",
+        features: [
+          "Multi-channel communication tools for diverse populations.",
+          "Secure identity verification and authentication.",
+          "Automated service request tracking and management.",
+          "Analytics for service improvement and resource allocation.",
+        ],
+      },
+      {
+        name: "Secure Data Management",
+        description:
+          "Our secure data management solutions help government agencies protect sensitive information while enabling appropriate data sharing and analysis.",
+        features: [
+          "Military-grade encryption for sensitive government data.",
+          "Granular access controls and comprehensive audit trails.",
+          "Compliance with government security standards (FISMA, FedRAMP).",
+          "Secure inter-agency data sharing capabilities.",
+        ],
+      },
+      {
+        name: "Digital Service Delivery",
+        description:
+          "Our digital service delivery platforms help government agencies provide efficient, accessible services to all citizens.",
+        features: [
+          "Accessible design that meets WCAG standards.",
+          "Multi-language support for diverse communities.",
+          "Integration with legacy government systems.",
+          "Mobile-friendly interfaces for on-the-go access.",
+        ],
+      },
+    ],
+    challenges: [
+      "Meeting strict security and compliance requirements",
+      "Integrating with legacy government systems",
+      "Providing accessible services to all citizens",
+      "Operating within budget constraints",
+    ],
+    caseStudies: [
+      {
+        title: "State Government Agency",
+        description:
+          "Implemented a comprehensive digital transformation initiative that improved service delivery efficiency by 40% and citizen satisfaction by 35%.",
+        results: [
+          "40% improvement in service delivery efficiency",
+          "35% increase in citizen satisfaction",
+          "25% reduction in processing times",
+        ],
+      },
+      {
+        title: "Municipal Government",
+        description:
+          "Developed a secure citizen engagement platform that increased online service adoption by 60% and reduced in-person visits by 30%.",
+        results: [
+          "60% increase in online service adoption",
+          "30% reduction in in-person visits",
+          "45% improvement in response times",
+        ],
+      },
+    ],
+  },
+  {
+    id: "real-estate",
+    name: "Real Estate & Property Management",
+    icon: <Home className="h-8 w-8 text-[#0055b3]" />,
+    description: "Innovative solutions for property management and real estate.",
+    longDescription:
+      "Our real estate and property management technology solutions are designed to streamline operations, enhance tenant experiences, and optimize property performance. From smart building systems to comprehensive property management platforms, we provide the tools needed to succeed in today's competitive real estate market.",
+    image: "/images/modern-workspace.jpeg",
+    systems: [
+      {
+        name: "Property Management Platforms",
+        description:
+          "Our property management platforms provide comprehensive tools for managing properties, tenants, maintenance, and finances in one integrated system.",
+        features: [
+          "Automated rent collection and financial reporting.",
+          "Tenant portal for communication and service requests.",
+          "Maintenance scheduling and vendor management.",
+          "Document management and lease automation.",
+        ],
+      },
+      {
+        name: "Smart Building Systems",
+        description:
+          "Our smart building systems leverage IoT technology to optimize building performance, reduce costs, and enhance occupant comfort.",
+        features: [
+          "Energy management and optimization.",
+          "Predictive maintenance for building systems.",
+          "Occupancy monitoring and space utilization.",
+          "Environmental controls and comfort management.",
+        ],
+      },
+      {
+        name: "Real Estate Analytics",
+        description:
+          "Our real estate analytics solutions provide actionable insights for property investment, management, and optimization.",
+        features: [
+          "Market analysis and investment opportunity identification.",
+          "Portfolio performance tracking and benchmarking.",
+          "Predictive analytics for property value trends.",
+          "Tenant behavior analysis and retention strategies.",
+        ],
+      },
+    ],
+    challenges: [
+      "Managing diverse property portfolios efficiently",
+      "Enhancing tenant experiences and retention",
+      "Optimizing property performance and value",
+      "Adapting to changing market conditions",
+    ],
+    caseStudies: [
+      {
+        title: "Commercial Property Management Firm",
+        description:
+          "Implemented an integrated property management platform that improved operational efficiency by 35% and tenant satisfaction by 28%.",
+        results: [
+          "35% improvement in operational efficiency",
+          "28% increase in tenant satisfaction",
+          "22% reduction in maintenance costs",
+        ],
+      },
+      {
+        title: "Residential Real Estate Developer",
+        description:
+          "Developed a smart building system for a luxury apartment complex that reduced energy costs by 25% and increased property value by 15%.",
+        results: [
+          "25% reduction in energy costs",
+          "15% increase in property value",
+          "30% improvement in tenant retention",
+        ],
+      },
+    ],
+  },
+  {
+    id: "logistics",
+    name: "Logistics & Transportation",
+    icon: <Truck className="h-8 w-8 text-[#0055b3]" />,
+    description: "Optimized solutions for modern logistics and transportation.",
+    longDescription:
+      "Our logistics and transportation technology solutions are designed to optimize supply chains, improve visibility, and enhance operational efficiency. From fleet management systems to comprehensive logistics platforms, we provide the tools needed to navigate the complexities of modern global logistics.",
+    image: "/images/digital-workspace.jpeg",
+    systems: [
+      {
+        name: "Supply Chain Management",
+        description:
+          "Our supply chain management solutions provide end-to-end visibility and control over complex global supply chains.",
+        features: [
+          "Real-time tracking and monitoring of shipments.",
+          "Predictive analytics for demand forecasting.",
+          "Supplier management and performance tracking.",
+          "Inventory optimization and warehouse management.",
+        ],
+      },
+      {
+        name: "Fleet Management Systems",
+        description:
+          "Our fleet management systems help transportation companies optimize routes, reduce costs, and improve driver safety.",
+        features: [
+          "Real-time vehicle tracking and telematics.",
+          "Route optimization and fuel management.",
+          "Driver performance monitoring and safety analytics.",
+          "Maintenance scheduling and compliance management.",
+        ],
+      },
+      {
+        name: "Last-Mile Delivery Optimization",
+        description:
+          "Our last-mile delivery solutions help companies meet customer expectations for fast, reliable delivery while controlling costs.",
+        features: [
+          "Dynamic routing and scheduling algorithms.",
+          "Customer communication and delivery updates.",
+          "Proof of delivery and electronic documentation.",
+          "Integration with e-commerce and order management systems.",
+        ],
+      },
+    ],
+    challenges: [
+      "Managing complex global supply chains",
+      "Optimizing routes and reducing transportation costs",
+      "Meeting customer expectations for visibility and delivery speed",
+      "Ensuring compliance with transportation regulations",
+    ],
+    caseStudies: [
+      {
+        title: "Global Logistics Provider",
+        description:
+          "Implemented a comprehensive supply chain visibility platform that improved on-time delivery by 28% and reduced transportation costs by 15%.",
+        results: [
+          "28% improvement in on-time delivery",
+          "15% reduction in transportation costs",
+          "35% increase in customer satisfaction",
+        ],
+      },
+      {
+        title: "Regional Trucking Company",
+        description:
+          "Developed a fleet management system that optimized routes, reduced fuel consumption by 18%, and improved driver safety metrics by 25%.",
+        results: [
+          "18% reduction in fuel consumption",
+          "25% improvement in driver safety metrics",
+          "22% increase in fleet utilization",
+        ],
+      },
+    ],
+  },
+  {
+    id: "retail",
+    name: "Retail & E-Commerce",
+    icon: <ShoppingBag className="h-8 w-8 text-[#0055b3]" />,
+    description: "Digital solutions for modern retail and e-commerce businesses.",
+    longDescription:
+      "Our retail and e-commerce technology solutions are designed to enhance customer experiences, optimize operations, and drive sales growth. From omnichannel platforms to advanced analytics, we provide the tools retailers need to thrive in today's competitive digital marketplace.",
+    image: "/images/business-workshop.jpeg",
+    systems: [
+      {
+        name: "Omnichannel Retail Platforms",
+        description:
+          "Our omnichannel retail platforms provide seamless customer experiences across online and offline channels.",
+        features: [
+          "Unified inventory and order management.",
+          "Consistent pricing and promotions across channels.",
+          "Buy online, pick up in-store (BOPIS) capabilities.",
+          "Customer profile unification and journey tracking.",
+        ],
+      },
+      {
+        name: "Retail Analytics",
+        description:
+          "Our retail analytics solutions provide actionable insights for merchandising, marketing, and operations.",
+        features: [
+          "Customer segmentation and behavior analysis.",
+          "Product performance and inventory optimization.",
+          "Pricing optimization and promotion effectiveness.",
+          "Store layout and space utilization analytics.",
+        ],
+      },
+      {
+        name: "E-Commerce Optimization",
+        description:
+          "Our e-commerce optimization solutions help online retailers maximize conversion rates and customer lifetime value.",
+        features: [
+          "Personalized product recommendations and search.",
+          "Abandoned cart recovery and conversion optimization.",
+          "Mobile commerce optimization and app development.",
+          "Integration with marketplaces and social commerce.",
+        ],
+      },
+    ],
+    challenges: [
+      "Creating seamless omnichannel customer experiences",
+      "Competing with large e-commerce platforms",
+      "Optimizing inventory and supply chain efficiency",
+      "Personalizing customer experiences at scale",
+    ],
+    caseStudies: [
+      {
+        title: "National Retail Chain",
+        description:
+          "Implemented an omnichannel retail platform that increased online sales by 45% and improved in-store traffic by 18%.",
+        results: [
+          "45% increase in online sales",
+          "18% improvement in in-store traffic",
+          "32% increase in customer loyalty program participation",
+        ],
+      },
+      {
+        title: "Specialty E-Commerce Retailer",
+        description:
+          "Developed a personalization engine that improved conversion rates by 35% and average order value by 28%.",
+        results: [
+          "35% improvement in conversion rates",
+          "28% increase in average order value",
+          "42% reduction in cart abandonment",
+        ],
+      },
+    ],
+  },
 ]
 
 export default function IndustryDetailPage({ params }: { params: { id: string } }) {
@@ -407,15 +695,14 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
                 Schedule a Consultation
               </Button>
               </Link>
-          
               <Link href="/solutions">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
-                >
-                  View All Solutions
-                </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
+              >
+                View All Solutions
+              </Button>
               </Link>
             </div>
           </div>
