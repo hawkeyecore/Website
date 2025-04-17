@@ -95,11 +95,11 @@ export async function query(sql: string, params: any[] = []) {
     // This code will only run in production, not in preview
     const { Pool } = await import("pg")
     const pool = new Pool({
-      host: process.env.DB_HOST,
-      port: Number.parseInt(process.env.DB_PORT || "5432", 10),
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
+      host: process.env.PGHOST,
+      port: Number.parseInt(process.env.PGPORT || "5432", 10),
+      database: process.env.POSTGRES_DB,
+      user: process.env.PGUSER,
+      password: process.env.PGPASSWORD,
       ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
     })
 

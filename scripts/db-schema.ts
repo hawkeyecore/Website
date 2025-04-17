@@ -2,6 +2,12 @@ import { query } from "../lib/db"
 
 async function setupDatabase() {
   try {
+    console.log("Connecting to the database...");
+
+    // Test database connection
+    const testConnection = await query("SELECT 1");
+    console.log("Database connection successful:", testConnection);
+
     // Create users table
     await query(`
       CREATE TABLE IF NOT EXISTS users (
