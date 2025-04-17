@@ -240,8 +240,8 @@ export default function Home() {
           </div>
           <div className="flex justify-center">
             <Link href="/products">
-            <Button size="lg">View All Products</Button>
-            <Link/>
+              <Button size="lg">View All Products</Button>
+            </Link>
           </div>
         </div>
       </section>
