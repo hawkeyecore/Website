@@ -305,8 +305,9 @@ export default function IndustriesPage() {
                         security, and growth.
                       </p>
                       <div className="flex gap-4">
-                        <Button>Request Demo</Button>
+                      <Link href="/contact">
                         <Button variant="outline">Learn More</Button>
+                      </Link>
                       </div>
                     </div>
                   </div>
@@ -369,16 +370,11 @@ export default function IndustriesPage() {
                 Our team of experts can develop tailored solutions to address your specific industry challenges.
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <Link href="/contact">
                 <Button size="lg" variant="secondary">
                   Contact Our Experts
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
-                >
-                  View Case Studies
-                </Button>
+                </Link>
               </div>
             </div>
             <div className="flex items-center justify-center">

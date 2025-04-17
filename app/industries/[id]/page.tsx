@@ -255,10 +255,9 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
                 </div>
                 <p className="text-muted-foreground md:text-xl">{industry.longDescription}</p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Link href="/contact">
                   <Button size="lg">Request a Consultation</Button>
-                  <Button size="lg" variant="outline">
-                    View Solutions
-                  </Button>
+                </Link>
                 </div>
               </div>
               <div className="relative h-[300px] md:h-[400px] overflow-hidden rounded-lg">
@@ -403,9 +402,12 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
+            <Link href="/contact">
               <Button size="lg" variant="secondary">
                 Schedule a Consultation
               </Button>
+              </Link>
+              <Link href="/solutions"></Link>
               <Button
                 size="lg"
                 variant="outline"
@@ -413,6 +415,7 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
               >
                 View All Solutions
               </Button>
+              </Link>
             </div>
           </div>
         </div>

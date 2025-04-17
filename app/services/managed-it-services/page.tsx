@@ -26,9 +26,6 @@ export default function ManagedITServicesPage() {
                   <Link href="/contact">
                     <Button size="lg">Request a Consultation</Button>
                   </Link>
-                  <Button size="lg" variant="outline">
-                    Download Brochure
-                  </Button>
                 </div>
               </div>
               <div className="relative h-[300px] md:h-[400px] overflow-hidden rounded-lg">
@@ -253,13 +250,6 @@ export default function ManagedITServicesPage() {
                   Schedule a Consultation
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
-              >
-                Contact Sales
-              </Button>
             </div>
           </div>
         </div>

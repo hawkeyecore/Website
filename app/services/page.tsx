@@ -182,9 +182,7 @@ export default function ServicesPage() {
                 Contact us today to discuss how our services can help you achieve your technology goals.
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" variant="secondary">
-                  Get Started
-                </Button>
+              <Link href="/contact">
                 <Button
                   size="lg"
                   variant="outline"
@@ -192,6 +190,7 @@ export default function ServicesPage() {
                 >
                   Learn More
                 </Button>
+                </Link>
               </div>
             </div>
             <div className="flex items-center justify-center">
