@@ -407,14 +407,15 @@ export default function IndustryDetailPage({ params }: { params: { id: string } 
                 Schedule a Consultation
               </Button>
               </Link>
-              <Link href="/solutions"></Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
-              >
-                View All Solutions
-              </Button>
+          
+              <Link href="/solutions">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
+                >
+                  View All Solutions
+                </Button>
               </Link>
             </div>
           </div>
