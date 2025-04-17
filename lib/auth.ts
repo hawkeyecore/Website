@@ -4,6 +4,10 @@ import bcrypt from "bcryptjs"
 
 const secret = process.env.JWT_SECRET
 
+if (!secret) {
+  throw new Error("JWT_SECRET is not defined in environment variables")
+}
+
 async function verifyAuth(request: Request) {
   const token = cookies().get("token")?.value
 
