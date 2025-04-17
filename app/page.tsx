@@ -88,13 +88,14 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center">
+          <Link href="/services">
             <Button variant="outline" size="lg">
               View All Services
             </Button>
+            </Link>
           </div>
         </div>
       </section>
-
       {/* Industry Solutions Section */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
         <div className="container px-4 md:px-6">
@@ -238,7 +239,9 @@ export default function Home() {
             ))}
           </div>
           <div className="flex justify-center">
+            <Link href="/products">
             <Button size="lg">View All Products</Button>
+            <Link/>
           </div>
         </div>
       </section>
@@ -261,13 +264,6 @@ export default function Home() {
                   Contact Us
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
-              >
-                Schedule a Demo
-              </Button>
             </div>
           </div>
         </div>

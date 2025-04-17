@@ -10,7 +10,7 @@ export const metadata = {
   icons: {
     icon: "/hawkeye-core-logo.png",
   },
-    generator: 'v0.dev'
+    generator: 'Hawkeye-core'
 }
 
 interface RootLayoutProps {
